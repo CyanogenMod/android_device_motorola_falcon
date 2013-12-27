@@ -1,0 +1,14 @@
+[
+  {
+    "repository": "android_device_motorola_qcom-common",
+    "target_path": "device/motorola/qcom-common"
+  },
+  {
+    "repository": "android_device_motorola_msm8226-common",
+    "target_path": "device/motorola/msm8226-common"
+  },
+  {
+    "repository": "android_kernel_motorola_msm8226-common",
+    "target_path": "kernel/motorola/msm8226-common"
+  }
+]

@@ -32,7 +32,7 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 #telephony
 PRODUCT_PROPERTY_OVERRIDES += \
-	telephony.lteOnGsmDevice=1 \
+	telephony.lteOnGsmDevice=0 \
 	telephony.lteOnCdmaDevice=0 \
 	ro.telephony.default_network=3 \
 	persist.radio.no_wait_for_card=1 \

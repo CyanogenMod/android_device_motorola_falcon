@@ -1,2 +1,2 @@
-add_lunch_combo cm_xt1034-userdebug
+add_lunch_combo cm_falcon-userdebug
 

@@ -24,9 +24,13 @@
 -include device/motorola/msm8226-common/BoardConfigCommon.mk
 
 # inherit from the proprietary version
--include vendor/motorola/xt1034/BoardConfigVendor.mk
+-include vendor/motorola/falcon/BoardConfigVendor.mk
 
-LOCAL_PATH := device/motorola/xt1034
+LOCAL_PATH := device/motorola/falcon
+
+# Vendor Init
+TARGET_INIT_VENDOR_LIB := libinit_msm
+TARGET_LIBINIT_DEFINES_FILE := device/motorola/falcon/init/init_falcon.c
 
 #bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth

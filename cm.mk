@@ -7,12 +7,6 @@ TARGET_SCREEN_HEIGHT := 1280
 
 # Release name
 PRODUCT_RELEASE_NAME := MOTO G
-PRODUCT_NAME := cm_xt1034
+PRODUCT_NAME := cm_falcon
 
-$(call inherit-product, device/motorola/xt1034/full_xt1034.mk)
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_BRAND=motorola \
-    PRODUCT_NAME=XT1034 \
-    BUILD_PRODUCT=falcon_umts \
-    BUILD_FINGERPRINT=motorola/falcon_retuaws/falcon_umts:4.4.2/KXB20.9-1.8-1.4/4:user/release-keys
+$(call inherit-product, device/motorola/falcon/full_falcon.mk)

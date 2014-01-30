@@ -16,21 +16,21 @@
 
 #
 # This file is the build configuration for a full Android
-# build for xt1034 hardware. This cleanly combines a set of
+# build for falcon hardware. This cleanly combines a set of
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps). Except for a few implementation
 # details, it only fundamentally contains two inherit-product
-# lines, full and xt1034, hence its name.
+# lines, full and falcon, hence its name.
 #
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from xt1034 device
-$(call inherit-product, device/motorola/xt1034/device_xt1034.mk)
+$(call inherit-product, device/motorola/falcon/device_falcon.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := xt1034
-PRODUCT_NAME := full_xt1034
+PRODUCT_DEVICE := falcon
+PRODUCT_NAME := full_falcon
 PRODUCT_BRAND := motorola
-PRODUCT_MODEL := XT1034
+PRODUCT_MODEL := falcon
 PRODUCT_MANUFACTURER := motorola

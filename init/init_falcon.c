@@ -40,6 +40,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
 {
     char platform[PROP_VALUE_MAX];
     char radio[PROP_VALUE_MAX];
+    char device[PROP_VALUE_MAX];
+    char devicename[PROP_VALUE_MAX];
     int rc;
 
     UNUSED(msm_id);
@@ -97,5 +99,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.mot.build.customerid ","retusa_aws");
         property_set("persist.radio.multisim.config", "");
     }
-    ERROR("Found radio=%s setting build properties\n", radio);
+    property_get("ro.product.device", device);
+    strlcpy(devicename, device, sizeof(devicename));
+    ERROR("Found radio id %s setting build properties for %s device\n", radio, devicename);
 }

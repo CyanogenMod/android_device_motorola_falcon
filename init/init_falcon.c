@@ -59,7 +59,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.product.model", "Moto G");
         property_set("ro.build.description", "falcon_retgb-user 4.3 14.10.0Q3.X-76-LGG-8 54 release-keys");
         property_set("ro.build.fingerprint", "motorola/falcon_retgb/falcon_umts:4.3/14.10.0Q3.X-76-LGG-8/54:user/release-keys");
-        property_set("ro.mot.build.customerid ","RTGB");
+        property_set("ro.mot.build.customerid", "RTGB");
         property_set("persist.radio.multisim.config", "");
     } else if (ISMATCH(radio, "0x3")) {
         /* cdma xt1028 */
@@ -68,14 +68,14 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.build.description", "falcon_verizon-user 4.3 14.10.0Q3.X-84-14 16 release-keys");
         property_set("ro.build.fingerprint", "motorola/falcon_verizon/falcon_cdma:4.3/14.10.0Q3.X-84-14/16:user/release-keys");
         property_set("persist.radio.multisim.config", "");
-        property_set("ro.mot.build.customerid ","verizon");
+        property_set("ro.mot.build.customerid ", "verizon");
         property_set("ro.telephony.gsm-routes-us-smsc", "1");
         property_set("persist.radio.vrte_logic", "2");
         property_set("persist.radio.0x9e_not_callname", "1");
         property_set("persist.radio.skip_data_check", "1");
         property_set("persist.ril.max.crit.qmi.fails", "4");
         property_set("ro.cdma.home.operator.isnan", "1");
-        property_set("ro.cdma.otaspnumschema","SELC,1,80,99");
+        property_set("ro.cdma.otaspnumschema", "SELC,1,80,99");
         property_set("ro.cdma.data_retry_config", "max_retries=infinite,0,0,10000,10000,100000,10000,10000,10000,10000,140000,540000,960000");
         property_set("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
         property_set("ro.com.google.clientidbase.ms", "android-verizon");
@@ -87,7 +87,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.product.model", "Moto G");
         property_set("ro.build.description", "falcon_retbr_ds-user 4.3 14.10.0Q3.X-76-LCG-8 60 release-keys");
         property_set("ro.build.fingerprint", "motorola/falcon_retbr_ds/falcon_umtsds:4.3/14.10.0Q3.X-76-LCG-8/60:user/release-keys");
-        property_set("ro.mot.build.customerid ","RETBR");
+        property_set("ro.mot.build.customerid", "RETBR");
         property_set("persist.radio.multisim.config", "dsds");
         property_set("persist.radio.dont_use_dsd", "true");
     } else if (ISMATCH(radio, "0x6")) {

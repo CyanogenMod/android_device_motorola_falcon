@@ -28,6 +28,7 @@
  */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "vendor_init.h"
 #include "property_service.h"
@@ -42,6 +43,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     char radio[PROP_VALUE_MAX];
     char device[PROP_VALUE_MAX];
     char devicename[PROP_VALUE_MAX];
+    char cdma_variant[92];
+    FILE *fp;
     int rc;
 
     UNUSED(msm_id);
@@ -53,6 +56,9 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         return;
 
     property_get("ro.boot.radio", radio);
+    fp = popen("/system/bin/ls -la /fsg/falcon_3.img.gz | /system/xbin/cut -d '_' -f3", "r");
+    fgets(cdma_variant, sizeof(cdma_variant), fp);
+    pclose(fp);
     if (ISMATCH(radio, "0x1")) {
         /* xt1032 */
         property_set("ro.product.device", "falcon_umts");
@@ -62,13 +68,30 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.mot.build.customerid", "RTGB");
         property_set("persist.radio.multisim.config", "");
     } else if (ISMATCH(radio, "0x3")) {
-        /* cdma xt1028 */
-        property_set("ro.product.device", "falcon_cdma");
-        property_set("ro.product.model", "Moto G");
-        property_set("ro.build.description", "falcon_verizon-user 4.3 14.10.0Q3.X-84-14 16 release-keys");
-        property_set("ro.build.fingerprint", "motorola/falcon_verizon/falcon_cdma:4.3/14.10.0Q3.X-84-14/16:user/release-keys");
-        property_set("persist.radio.multisim.config", "");
-        property_set("ro.mot.build.customerid", "verizon");
+        /* cdma */
+        ERROR("CDMA variant=%s", cdma_variant);
+        if (ISMATCH(cdma_variant, "verizon")) {
+            /* xt1028 */
+            property_set("ro.product.device", "falcon_cdma");
+            property_set("ro.product.model", "Moto G");
+            property_set("ro.build.description", "falcon_verizon-user 4.3 14.10.0Q3.X-84-14 16 release-keys");
+            property_set("ro.build.fingerprint", "motorola/falcon_verizon/falcon_cdma:4.3/14.10.0Q3.X-84-14/16:user/release-keys");
+            property_set("persist.radio.multisim.config", "");
+            property_set("ro.mot.build.customerid", "verizon");
+            property_set("ro.cdma.home.operator.alpha", "Verizon");
+            property_set("ro.cdma.home.operator.numeric", "310004");
+            property_set("ro.com.google.clientidbase.ms", "android-verizon");
+            property_set("ro.com.google.clientidbase.am", "android-verizon");
+            property_set("ro.com.google.clientidbase.yt", "android-verizon");
+	    } else if (ISMATCH(cdma_variant, "sprint")) {
+			/* xt1031 */
+            property_set("ro.product.device", "falcon_cdma");
+            property_set("ro.product.model", "Moto G");
+            property_set("ro.build.description", "falcon_sprint-user 4.3 14.10.0Q3.X-84-14 16 release-keys");
+            property_set("ro.build.fingerprint", "motorola/falcon_sprint/falcon_cdma:4.3/14.10.0Q3.X-84-14/16:user/release-keys");
+            property_set("persist.radio.multisim.config", "");
+            property_set("ro.mot.build.customerid", "sprint");
+        }
         property_set("ro.telephony.gsm-routes-us-smsc", "1");
         property_set("persist.radio.vrte_logic", "2");
         property_set("persist.radio.0x9e_not_callname", "1");
@@ -78,9 +101,6 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.cdma.otaspnumschema", "SELC,1,80,99");
         property_set("ro.cdma.data_retry_config", "max_retries=infinite,0,0,10000,10000,100000,10000,10000,10000,10000,140000,540000,960000");
         property_set("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
-        property_set("ro.com.google.clientidbase.ms", "android-verizon");
-        property_set("ro.com.google.clientidbase.am", "android-verizon");
-        property_set("ro.com.google.clientidbase.yt", "android-verizon");
     } else if (ISMATCH(radio, "0x5")) {
         /* xt1033 */
         property_set("ro.product.device", "falcon_umtsds");

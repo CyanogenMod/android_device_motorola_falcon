@@ -29,6 +29,7 @@
 LOCAL_PATH := device/motorola/falcon
 
 # Vendor Init
+TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_msm
 TARGET_LIBINIT_DEFINES_FILE := device/motorola/falcon/init/init_falcon.c
 

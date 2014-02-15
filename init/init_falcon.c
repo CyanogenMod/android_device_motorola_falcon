@@ -105,11 +105,12 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         /* xt1033 */
         property_set("ro.product.device", "falcon_umtsds");
         property_set("ro.product.model", "Moto G");
-        property_set("ro.build.description", "falcon_retbr_ds-user 4.3 14.10.0Q3.X-76-LCG-8 60 release-keys");
-        property_set("ro.build.fingerprint", "motorola/falcon_retbr_ds/falcon_umtsds:4.3/14.10.0Q3.X-76-LCG-8/60:user/release-keys");
-        property_set("ro.mot.build.customerid", "RETBR");
+        property_set("ro.build.description", "falcon_asia_ds-user 4.4.2 KXB20.25-1.31 14 release-keys");
+        property_set("ro.build.fingerprint", "motorola/falcon_asia_ds/falcon_umtsds:4.4.2/KXB20.25-1.31/14:user/release-keys");
+        property_set("ro.mot.build.customerid", "RTASIA");
         property_set("persist.radio.multisim.config", "dsds");
         property_set("persist.radio.dont_use_dsd", "true");
+        property_set("persist.radio.plmn_name_cmp", "1");
     } else if (ISMATCH(radio, "0x6")) {
         /* xt1034 */
         property_set("ro.product.device", "falcon_umts");

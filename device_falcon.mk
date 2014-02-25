@@ -30,10 +30,6 @@ PRODUCT_LOCALES += xhdpi
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
-# GPE device check script
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gpecheck.sh:system/bin/gpecheck.sh
-
 # CDMA, GSM/WCDMA
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.default_network=5 \

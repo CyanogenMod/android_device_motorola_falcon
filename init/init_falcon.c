@@ -75,8 +75,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         /* xt1032 */
         property_set("ro.product.device", "falcon_umts");
         property_set("ro.product.model", "Moto G");
-        property_set("ro.build.description", "falcon_retgb-user 4.3 14.10.0Q3.X-76-LGG-8 54 release-keys");
-        property_set("ro.build.fingerprint", "motorola/falcon_retgb/falcon_umts:4.3/14.10.0Q3.X-76-LGG-8/54:user/release-keys");
+        property_set("ro.build.description", "falcon_retgb-user 4.4.2 KLB20.9-1.10-1.9 5 release-keys");
+        property_set("ro.build.fingerprint", "motorola/falcon_retgb/falcon_umts:4.4.2/KLB20.9-1.10-1.9/5:user/release-keys");
         property_set("ro.mot.build.customerid", "RTGB");
         property_set("persist.radio.multisim.config", "");
     } else if (ISMATCH(radio, "0x3")) {
@@ -95,8 +95,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
             property_set("ro.com.google.clientidbase.ms", "android-verizon");
             property_set("ro.com.google.clientidbase.am", "android-verizon");
             property_set("ro.com.google.clientidbase.yt", "android-verizon");
-	    } else {
-			/* xt1031 */
+        } else {
+            /* xt1031 */
             property_set("ro.product.device", "falcon_cdma");
             property_set("ro.product.model", "Moto G");
             property_set("ro.build.description", "falcon_boost-user 4.4.2 KXB20.9-1.10-1.18 18 release-keys");

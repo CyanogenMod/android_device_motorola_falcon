@@ -60,10 +60,18 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     fp = popen("/system/bin/ls -la /fsg/falcon_3.img.gz | /system/xbin/cut -d '_' -f3", "r");
     fgets(cdma_variant, sizeof(cdma_variant), fp);
     pclose(fp);
-    fp = popen("/system/bin/blkid /dev/block/mmcblk0p36 | cut -d ' ' -f3", "r");
+    fp = popen("/system/bin/blkid /dev/block/mmcblk0p36 | /system/xbin/cut -d ' ' -f3", "r");
     fgets(fstype, sizeof(fstype), fp);
     pclose(fp);
-    if (ISMATCH(radio, "0x1")) {
+    if (strstr(fstype, "ext4")) {
+        /* xt1032 GPE */
+        property_set("ro.product.device", "falcon_gpe");
+        property_set("ro.product.model", "Moto G");
+        property_set("ro.build.description", "falcon_gpe-user 4.4.2 KOT49H.M004 5 release-keys");
+        property_set("ro.build.fingerprint", "motorola/falcon_gpe/falcon_umts:4.4.2/KOT49H.M004/5:user/release-keys");
+        property_set("ro.mot.build.customerid", "retusa_glb");
+        property_set("persist.radio.multisim.config", "");
+    } else if (ISMATCH(radio, "0x1")) {
         /* xt1032 */
         property_set("ro.product.device", "falcon_umts");
         property_set("ro.product.model", "Moto G");
@@ -122,14 +130,6 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.build.description", "falcon_retuaws-user 4.4.2 KXB20.9-1.8-1.4 4 release-keys");
         property_set("ro.build.fingerprint", "motorola/falcon_retuaws/falcon_umts:4.4.2/KXB20.9-1.8-1.4/4:user/release-keys");
         property_set("ro.mot.build.customerid", "retusa_aws");
-        property_set("persist.radio.multisim.config", "");
-    } else if (strstr(fstype, "ext4")) {
-        /* xt1032 GPE */
-        property_set("ro.product.device", "falcon_gpe");
-        property_set("ro.product.model", "Moto G");
-        property_set("ro.build.description", "falcon_gpe-user 4.4.2 KOT49H.M004 5 release-keys");
-        property_set("ro.build.fingerprint", "motorola/falcon_gpe/falcon_umts:4.4.2/KOT49H.M004/5:user/release-keys");
-        property_set("ro.mot.build.customerid", "retusa_glb");
         property_set("persist.radio.multisim.config", "");
     }
     property_get("ro.product.device", device);

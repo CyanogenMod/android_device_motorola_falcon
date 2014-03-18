@@ -1,3 +1,4 @@
 # proprietary file list
 # bin/filename
+xt1033/lib/libril.so
 xt1033/vendor/lib/libril-qc-qmi-1.so

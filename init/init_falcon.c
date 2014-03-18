@@ -123,7 +123,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("persist.radio.multisim.config", "dsds");
         property_set("persist.radio.dont_use_dsd", "true");
         property_set("persist.radio.plmn_name_cmp", "1");
-    } else if (ISMATCH(radio, "0x6")) {
+    } else if (ISMATCH(radio, "0x5")) {
         /* xt1034 */
         property_set("ro.product.device", "falcon_umts");
         property_set("ro.product.model", "Moto G");

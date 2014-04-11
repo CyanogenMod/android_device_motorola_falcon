@@ -399,7 +399,7 @@
         minFrameWidth="176" maxFrameWidth="1920"
         minFrameHeight="144" maxFrameHeight="1088"
         minFrameRate="15" maxFrameRate="60"
-        maxHFRFrameWidth="720" maxHFRFrameHeight="480"
+        maxHFRFrameWidth="800" maxHFRFrameHeight="480"
         maxHFRMode="120"  />
 
     <VideoEncoderCap name="h263" enabled="true"

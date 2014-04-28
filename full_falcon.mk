@@ -34,3 +34,4 @@ PRODUCT_NAME := full_falcon
 PRODUCT_BRAND := motorola
 PRODUCT_MODEL := falcon
 PRODUCT_MANUFACTURER := motorola
+PRODUCT_CHARACTERISTICS := nosdcard

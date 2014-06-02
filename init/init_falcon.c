@@ -60,7 +60,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     fp = popen("/system/bin/ls -la /fsg/falcon_3.img.gz | /system/xbin/cut -d '_' -f3", "r");
     fgets(cdma_variant, sizeof(cdma_variant), fp);
     pclose(fp);
-    fp = popen("/system/bin/blkid /dev/block/mmcblk0p36 | /system/xbin/cut -d ' ' -f3", "r");
+    fp = popen("/system/bin/blkid /dev/block/platform/msm_sdcc.1/by-name/userdata | /system/xbin/cut -d ' ' -f3", "r");
     fgets(fstype, sizeof(fstype), fp);
     pclose(fp);
     if (strstr(fstype, "ext4")) {

@@ -43,8 +43,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     char radio[PROP_VALUE_MAX];
     char device[PROP_VALUE_MAX];
     char devicename[PROP_VALUE_MAX];
-    char cdma_variant[92];
-    char fstype[92];
+    char cdma_variant[92] = "";
+    char fstype[256] = "";
     FILE *fp;
     int rc;
 
@@ -57,12 +57,19 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         return;
 
     property_get("ro.boot.radio", radio);
+
     fp = popen("/system/bin/ls -la /fsg/falcon_3.img.gz | /system/xbin/cut -d '_' -f3", "r");
-    fgets(cdma_variant, sizeof(cdma_variant), fp);
-    pclose(fp);
+    if (fp != NULL) {
+        fgets(cdma_variant, sizeof(cdma_variant), fp);
+        pclose(fp);
+    }
+
     fp = popen("/system/bin/blkid /dev/block/platform/msm_sdcc.1/by-name/userdata | /system/xbin/cut -d ' ' -f3", "r");
-    fgets(fstype, sizeof(fstype), fp);
-    pclose(fp);
+    if (fp != NULL) {
+        fgets(fstype, sizeof(fstype), fp);
+        pclose(fp);
+    }
+
     if (strstr(fstype, "ext4")) {
         /* xt1032 GPE */
         property_set("ro.product.device", "falcon_gpe");

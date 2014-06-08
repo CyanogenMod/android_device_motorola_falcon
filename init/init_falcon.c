@@ -43,8 +43,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     char radio[PROP_VALUE_MAX];
     char device[PROP_VALUE_MAX];
     char devicename[PROP_VALUE_MAX];
-    char cdma_variant[92];
-    char fstype[92];
+    char cdma_variant[92] = "";
+    char fstype[256] = "";
     FILE *fp;
     int rc;
 
@@ -57,12 +57,19 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         return;
 
     property_get("ro.boot.radio", radio);
+
     fp = popen("/system/bin/ls -la /fsg/falcon_3.img.gz | /system/xbin/cut -d '_' -f3", "r");
-    fgets(cdma_variant, sizeof(cdma_variant), fp);
-    pclose(fp);
-    fp = popen("/system/bin/blkid /dev/block/platform/msm_sdcc.1/by-name/userdata | /system/xbin/cut -d ' ' -f3", "r");
-    fgets(fstype, sizeof(fstype), fp);
-    pclose(fp);
+    if (fp != NULL) {
+        fgets(cdma_variant, sizeof(cdma_variant), fp);
+        pclose(fp);
+    }
+
+    fp = popen("/system/bin/blkid /dev/block/mmcblk0p36 | /system/xbin/cut -d ' ' -f3", "r");
+    if (fp != NULL) {
+        fgets(fstype, sizeof(fstype), fp);
+        pclose(fp);
+    }
+
     if (strstr(fstype, "ext4")) {
         /* xt1032 GPE */
         property_set("ro.product.device", "falcon_gpe");
@@ -75,8 +82,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         /* xt1032 */
         property_set("ro.product.device", "falcon_umts");
         property_set("ro.product.model", "Moto G");
-        property_set("ro.build.description", "falcon_retgb-user 4.4.2 KLB20.9-1.10-1.9 5 release-keys");
-        property_set("ro.build.fingerprint", "motorola/falcon_retgb/falcon_umts:4.4.2/KLB20.9-1.10-1.9/5:user/release-keys");
+        property_set("ro.build.description", "falcon_retgb-user 4.3 14.10.0Q3.X-76-LGG-8 54 release-keys");
+        property_set("ro.build.fingerprint", "motorola/falcon_retgb/falcon_umts:4.3/14.10.0Q3.X-76-LGG-8/54:user/release-keys");
         property_set("ro.mot.build.customerid", "RTGB");
         property_set("persist.radio.multisim.config", "");
     } else if (ISMATCH(radio, "0x3")) {
@@ -95,8 +102,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
             property_set("ro.com.google.clientidbase.ms", "android-verizon");
             property_set("ro.com.google.clientidbase.am", "android-verizon");
             property_set("ro.com.google.clientidbase.yt", "android-verizon");
-        } else {
-            /* xt1031 */
+	    } else {
+			/* xt1031 */
             property_set("ro.product.device", "falcon_cdma");
             property_set("ro.product.model", "Moto G");
             property_set("ro.build.description", "falcon_boost-user 4.4.2 KXB20.9-1.10-1.18 18 release-keys");

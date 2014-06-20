@@ -17,3 +17,4 @@
 
 def FullOTA_InstallEnd(info):
 	info.script.AppendExtra('ifelse(is_substring("0x5", getprop("ro.boot.radio")), run_program("/sbin/sh", "-c", "busybox cp -R /system/xt1033/* /system/"));')
+	info.script.AppendExtra('set_metadata("/system/bin/rild", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:rild_exec:s0");')

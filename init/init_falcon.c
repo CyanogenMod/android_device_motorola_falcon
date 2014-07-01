@@ -117,9 +117,9 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         /* xt1033 */
         property_set("ro.product.device", "falcon_umtsds");
         property_set("ro.product.model", "Moto G");
-        property_set("ro.build.description", "falcon_asia_ds-user 4.4.2 KXB20.25-1.31 14 release-keys");
-        property_set("ro.build.fingerprint", "motorola/falcon_asia_ds/falcon_umtsds:4.4.2/KXB20.25-1.31/14:user/release-keys");
-        property_set("ro.mot.build.customerid", "RTASIA");
+        property_set("ro.build.description", "falcon_retbr_ds-user 4.4.3 KXB21.14-L1.32 30 release-keys");
+        property_set("ro.build.fingerprint", "motorola/falcon_retbr_ds/falcon_umtsds:4.4.3/KXB21.14-L1.32/30:user/release-keys");
+        property_set("ro.mot.build.customerid", "RETBR");
         property_set("persist.radio.multisim.config", "dsds");
         property_set("persist.radio.dont_use_dsd", "true");
         property_set("persist.radio.plmn_name_cmp", "1");
@@ -127,8 +127,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         /* xt1034 */
         property_set("ro.product.device", "falcon_umts");
         property_set("ro.product.model", "Moto G");
-        property_set("ro.build.description", "falcon_retuaws-user 4.4.2 KXB20.9-1.8-1.4 4 release-keys");
-        property_set("ro.build.fingerprint", "motorola/falcon_retuaws/falcon_umts:4.4.2/KXB20.9-1.8-1.4/4:user/release-keys");
+        property_set("ro.build.description", "falcon_retuaws-user 4.4.3 KXB21.14-L1.32 30 release-keys");
+        property_set("ro.build.fingerprint", "motorola/falcon_retuaws/falcon_umts:4.4.3/KXB21.14-L1.32/30:user/release-keys");
         property_set("ro.mot.build.customerid", "retusa_aws");
         property_set("persist.radio.multisim.config", "");
     }

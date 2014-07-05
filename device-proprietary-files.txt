@@ -1,4 +1,2 @@
 # proprietary file list
 # bin/filename
-xt1033/bin/rild
-xt1033/lib/libril.so

@@ -1,0 +1,1 @@
+allow nfc cache_file:file { lock open };

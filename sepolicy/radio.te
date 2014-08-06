@@ -1,0 +1,1 @@
+allow radio cache_file:file { lock open };

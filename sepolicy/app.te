@@ -1,0 +1,11 @@
+allow media_app cache_backup_file:dir getattr;
+allow media_app rootfs:file { read getattr open };
+allow platform_app pds_file:dir getattr;
+allow platform_app persist_file:dir getattr;
+allow platform_app rootfs:file getattr;
+allow platform_app tombstone_data_file:dir getattr;
+#su
+allow platform_app device:fifo_file { read write open };
+allow platform_app device:sock_file write;
+allow platform_app init:unix_stream_socket connectto;
+allow platform_app su_exec:file { read getattr open execute execute_no_trans };

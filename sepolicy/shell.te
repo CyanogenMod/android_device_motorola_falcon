@@ -1,0 +1,2 @@
+allow shell rootfs:file getattr;
+allow shell tmpfs:lnk_file read;

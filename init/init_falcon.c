@@ -81,7 +81,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("persist.radio.multisim.config", "");
     } else if (ISMATCH(radio, "0x3")) {
         /* cdma */
-        ERROR("CDMA variant=%s", cdma_variant);
+        INFO("CDMA variant=%s", cdma_variant);
         if (ISMATCH(cdma_variant, "verizon")) {
             /* xt1028 */
             property_set("ro.product.device", "falcon_cdma");
@@ -134,5 +134,5 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     }
     property_get("ro.product.device", device);
     strlcpy(devicename, device, sizeof(devicename));
-    ERROR("Found radio id: %s data %s setting build properties for %s device\n", radio, fstype, devicename);
+    INFO("Found radio id: %s data %s setting build properties for %s device\n", radio, fstype, devicename);
 }

@@ -42,6 +42,7 @@ lib/libmmcamera_ar0543.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libmm-qcamera.so
+lib/libmot_sensorlistener.so
 lib/libqomx_core.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegehw.so
@@ -207,6 +208,7 @@ vendor/lib/libqc-opt.so
 bin/mm-pp-daemon
 vendor/lib/libmm-abl.so
 vendor/lib/libmm-abl-oem.so
+vendor/lib/libsensor1.so
 
 # Qualcomm framework
 bin/irsc_util
@@ -251,10 +253,7 @@ vendor/lib/libril-qcril-hook-oem.so
 
 # Sensors
 bin/akmd8963
-etc/sensor_def_qcomdev.conf
 lib/hw/sensors.msm8226.so
-lib/libmot_sensorlistener.so
-vendor/lib/libsensor1.so
 
 # Touch fw
 etc/firmware/aps-Falc-01210000-0121-falcon.tdat

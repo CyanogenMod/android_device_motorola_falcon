@@ -265,8 +265,10 @@ vendor/lib/libthermalclient.so
 vendor/lib/libthermalioctl.so
 
 # Time services
+-app/TimeService.apk
 bin/time_daemon
 -vendor/lib/libtime_genoff.so
+vendor/lib/libTimeService.so
 
 # Venus (media) firmware
 etc/firmware/venus.b00

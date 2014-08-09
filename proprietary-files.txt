@@ -115,12 +115,8 @@ etc/quipc.conf
 etc/sap.conf
 etc/xtwifi.conf
 etc/xtra_root_cert.pem
-lib/hw/gps.default.so
 lib/libloc_api_v02.so
-lib/libloc_core.so
 lib/libloc_ds_api.so
-lib/libloc_eng.so
-lib/libgps.utils.so
 vendor/lib/libalarmservice_jni.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so

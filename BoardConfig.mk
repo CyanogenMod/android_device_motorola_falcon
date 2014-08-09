@@ -94,9 +94,6 @@ USE_OPENGL_RENDERER := true
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
 
-# GPS
-TARGET_NO_RPC := true
-
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
 TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_falcon.c

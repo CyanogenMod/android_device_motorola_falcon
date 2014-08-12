@@ -40,7 +40,7 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8226
 TARGET_NO_BOOTLOADER := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := xt1031,xt1032,xt1033,xt1034,xt1039,falcon_umts,falcon_umtsds,falcon_cdma,falcon_retuaws,falcon,falcon_gpe,peregrine
+TARGET_OTA_ASSERT_DEVICE := xt1031,xt1032,xt1033,xt1034,xt1039,xt1040,xt1045,falcon_umts,falcon_umtsds,falcon_cdma,falcon_retuaws,falcon,falcon_gpe,peregrine_retus,peregrine
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk

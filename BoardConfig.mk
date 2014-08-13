@@ -36,5 +36,8 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10485760
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1023410176
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 5930614784
 
+# Recovery
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
+
 # inherit from the proprietary version
 -include vendor/motorola/falcon/BoardConfigVendor.mk

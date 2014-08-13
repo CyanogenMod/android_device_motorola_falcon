@@ -1,4 +1,0 @@
-allow vold system_data_file:file { write open };
-allow vold kernel:system module_request;
-allow vold persist_file:dir { read getattr open ioctl };
-

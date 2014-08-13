@@ -1,2 +1,0 @@
-allow dhcp self:rawip_socket { create write setopt read };
-allow dhcp devpts:chr_file { read write ioctl };

@@ -1,6 +1,0 @@
-type libqc-opt, domain;
-
-# Set sys.media.vdec.sw value
-allow init_shell performance_prop:property_service set;
-allow libqc-opt performance_prop:property_service set;
-allow zygote performance_prop:property_service set;

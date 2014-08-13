@@ -1,1 +1,0 @@
-allow hostapd cgroup:dir { create add_name };

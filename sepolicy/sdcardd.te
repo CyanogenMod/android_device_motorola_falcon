@@ -1,1 +1,0 @@
-allow sdcardd self:capability sys_resource;

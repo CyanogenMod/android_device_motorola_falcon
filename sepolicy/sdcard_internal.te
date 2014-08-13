@@ -1,2 +1,0 @@
-allow sdcard_internal labeledfs:filesystem associate;
-

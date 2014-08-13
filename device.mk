@@ -17,5 +17,8 @@
 # call the proprietary setup
 $(call inherit-product, vendor/motorola/falcon/falcon-vendor.mk)
 
+# Overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
 # Inherit from msm8226-common
 $(call inherit-product, device/motorola/msm8226-common/msm8226.mk)

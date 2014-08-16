@@ -19,4 +19,15 @@
 <resources>
     <!-- Full path to the sysfs toggle -->
     <string name="flashDevice">/sys/class/leds/torch-light/brightness</string>
+
+    <!-- Lowest setting -->
+    <integer name="valueOn">5</integer>
+    <!-- Middle setting -->
+    <integer name="valueHigh">175</integer>
+    <!-- Highest setting, leave -1 if it doesn't exist -->
+    <integer name="valueDeathRay">255</integer>
+
+    <!-- If the device supports high brightness mode, enable this -->
+    <bool name="hasHighBrightness">true</bool>
+
 </resources>

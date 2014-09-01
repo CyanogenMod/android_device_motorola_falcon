@@ -226,7 +226,7 @@ on post-fs-data
     mkdir /data/misc/gpsone_d 0770 system gps
 
     #Create directories for QuIPS
-    mkdir /data/misc/quipc 0770 gps system
+    mkdir /data/misc/quipc 0770 system gps
 
     #Create directories for Location services
     mkdir /data/misc/location 0770 gps gps

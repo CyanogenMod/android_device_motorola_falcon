@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013 The CyanogenMod Project
+# Copyright (C) 2014 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,21 +14,20 @@
 # limitations under the License.
 #
 
-$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+# call the proprietary setup
+$(call inherit-product, vendor/motorola/falcon/falcon-vendor.mk)
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
-$(call inherit-product, device/motorola/msm8226-common/msm8226.mk)
-
-LOCAL_PATH := device/motorola/falcon
-
-# falcon specific overlay
+# Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-PRODUCT_LOCALES := en_US
-PRODUCT_LOCALES += xhdpi
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
+# Ramdisk
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    gpe-fstab.qcom
 
-$(call inherit-product, device/motorola/msm8226-common/keylayout/keylayout.mk)
-$(call inherit-product, vendor/motorola/falcon/falcon-vendor.mk)
+# Wifi
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+
+# Inherit from msm8226-common
+$(call inherit-product, device/motorola/msm8226-common/msm8226.mk)

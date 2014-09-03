@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013 The CyanogenMod Project
+# Copyright (C) 2014 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,32 +13,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
-# This file sets variables that control the way modules are built
-# thorughout the system. It should not be used to conditionally
-# disable makefiles (the proper mechanism to control what gets
-# included in a build is to use PRODUCT_PACKAGES in a product
-# definition file).
-#
-
+# inherit from common msm8226-common
 -include device/motorola/msm8226-common/BoardConfigCommon.mk
-
-# inherit from the proprietary version
--include vendor/motorola/falcon/BoardConfigVendor.mk
 
 LOCAL_PATH := device/motorola/falcon
 
-# Vendor Init
-TARGET_UNIFIED_DEVICE := true
+# Assert
+TARGET_OTA_ASSERT_DEVICE := xt1031,xt1032,xt1033,xt1034,falcon_umts,falcon_umtsds,falcon_cdma,falcon_retuaws,falcon,falcon_gpe
+
+# Kernel
+BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
+TARGET_KERNEL_CONFIG := msm8226_mmi_defconfig
+
+# Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := device/motorola/falcon/init/init_falcon.c
+TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_falcon.c
+TARGET_UNIFIED_DEVICE := true
 
-#bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+# Partitions
+BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10485760
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1023410176
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 5930614784
 
-#TWRP
-DEVICE_RESOLUTION := 720x1280
-TW_IGNORE_MAJOR_AXIS_0 := true
+# Recovery
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
-# userdata 8GB
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 8589934592
+# inherit from the proprietary version
+-include vendor/motorola/falcon/BoardConfigVendor.mk

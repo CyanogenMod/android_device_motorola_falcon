@@ -26,8 +26,22 @@
 <!-- IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                          -->
 <audio_platform_info>
 
-    <device name="SND_DEVICE_IN_CAMCORDER_MIC" acdb_id="50" />
-    <device name="SND_DEVICE_IN_VOICE_DMIC" acdb_id="6" />
-    <device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="61" />
+    <acdb_ids>
+        <device name="SND_DEVICE_IN_CAMCORDER_MIC" acdb_id="50" />
+        <device name="SND_DEVICE_IN_VOICE_DMIC" acdb_id="6" />
+        <device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="61" />
+    </acdb_ids>
+
+    <backend_names>
+        <!-- empty -->
+    </backend_names>
+
+    <pcm_ids>
+        <!-- empty -->
+    </pcm_ids>
+
+    <device_names>
+        <!-- empty -->
+    </device_names>
 
 </audio_platform_info>

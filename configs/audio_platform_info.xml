@@ -41,7 +41,7 @@
     </pcm_ids>
 
     <device_names>
-        <!-- empty -->
+        <device name="SND_DEVICE_IN_CAMCORDER_MIC" alias="camcorder-mic-bf" />
     </device_names>
 
 </audio_platform_info>

@@ -443,7 +443,7 @@
 		<ctl name="ADC3 Volume" value="8" />
 	</path>
 
-	<path name="camcorder-mic-unused">
+	<path name="camcorder-mic">
 		<ctl name="AIF1_CAP Mixer SLIM TX1" value="1" />
 		<ctl name="SLIM_0_TX Channels" value="One" />
 		<ctl name="SLIM TX1 MUX" value="DEC1" />
@@ -451,10 +451,6 @@
 		<ctl name="ADC1 Volume" value="0" />
 		<ctl name="ADC2 Volume" value="0" />
 		<ctl name="ADC3 Volume" value="19" />
-	</path>
-
-	<path name="camcorder-mic">
-		<path name="camcorder-mic-bf" />
 	</path>
 
 	<path name="stereo-mic12">

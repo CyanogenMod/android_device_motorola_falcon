@@ -68,6 +68,9 @@ on early-boot
     exec /system/bin/sh /init.qcom.syspart_fixup.sh ${ro.board.platform} ${ro.serialno}
 
 on boot
+    # mount debugfs for systrace
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state

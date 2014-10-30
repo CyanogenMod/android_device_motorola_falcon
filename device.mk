@@ -193,15 +193,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.crda.sh \
     init.qcom.bt.sh \
-    init.qcom.coex.sh \
-    init.qcom.efs.sync.sh \
     init.qcom.fm.sh \
-    init.qcom.mdm_links.sh \
-    init.qcom.modem_links.sh \
-    init.qcom.post_boot.sh \
-    init.qcom.thermal_conf.sh \
-    init.qcom.wifi.sh \
-    moto_com.sh \
     mount_pds.sh
 
 PRODUCT_PACKAGES += \
@@ -209,25 +201,17 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     gpe-fstab.qcom \
     gpecheck.sh \
-    init.class_main.sh \
     init.mmi.boot.sh \
-    init.mmi.rc \
     init.mmi.touch.sh \
-    init.qcom.class_core.sh \
-    init.qcom.early_boot.sh \
     init.qcom.rc \
-    init.qcom.sh \
     init.qcom.ssr.sh \
-    init.qcom.syspart_fixup.sh \
     init.qcom.usb.rc \
-    init.qcom.usb.sh \
     init.recovery.qcom.rc \
-    init.target.rc \
     ueventd.qcom.rc
 
 # Thermal
-PRODUCT_PACKAGES += \
-    thermal-engine-8226.conf
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf
 
 # Torch
 PRODUCT_PACKAGES += \

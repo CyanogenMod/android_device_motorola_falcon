@@ -28,8 +28,10 @@
 on init
     write /sys/class/android_usb/android0/f_rndis/wceis 1
     write /sys/class/android_usb/android0/cdrom_blkdev "/dev/block/platform/msm_sdcc.1/by-name/cdrom"
+    write /sys/bus/platform/drivers/msm_hsic_host/unbind "msm_hsic_host"
 
 on boot
+    write /sys/class/android_usb/android0/iSerial ${ro.serialno}
     write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
     write /sys/class/android_usb/android0/iProduct ${ro.product.model}
     write /sys/class/android_usb/android0/f_mass_storage/vendor ${ro.product.manufacturer}
@@ -39,11 +41,6 @@ on boot
     setprop usb.mtp.pid ${ro.usb.mtp}
     setprop usb.mtp.cdrom 0
     setprop usb.mtp.config mtp,usbnet
-
-service qcom-usb-sh /system/bin/sh /init.qcom.usb.sh
-    class core
-    user root
-    oneshot
 
 # Following are the parameters required for usb functionality. They provide configurable options like
 # product_id/vendor id and allows specifying required functions:

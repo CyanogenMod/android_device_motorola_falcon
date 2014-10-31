@@ -86,20 +86,6 @@ on init
 
 on fs
     mount_all fstab.qcom
-
-    # Keeping following partitions outside fstab file. As user may not have
-    # these partition flashed on the device. Failure to mount any partition in fstab file
-    # results in failure to launch late-start class.
-
-    wait /dev/block/platform/msm_sdcc.1/by-name/persist
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persist /persist nosuid nodev barrier=1
-
-    wait /dev/block/platform/msm_sdcc.1/by-name/fsg
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/fsg /fsg ro nosuid nodev barrier=0
-
-    wait /dev/block/platform/msm_sdcc.1/by-name/modem
-    exec /system/bin/resize2fs /dev/block/platform/msm_sdcc.1/by-name/modem
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro nosuid nodev barrier=0
     write /sys/kernel/boot_adsp/boot 1
 
     # Mount PDS

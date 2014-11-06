@@ -62,6 +62,7 @@
 #include <linux/capability.h>
 #include <linux/prctl.h>
 
+#include <liblog/log_read.c>
 #include <log/logger.h>
 #include <log/logd.h>
 #include <log/logprint.h>

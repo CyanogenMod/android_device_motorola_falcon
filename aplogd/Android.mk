@@ -4,7 +4,7 @@ LOCAL_PATH:= $(call my-dir)
 include $(BUILD_PREBUILD)
 include $(CLEAR_VARS)
 
-LOCAL_C_INCLUDES := external/sqlite/dist external/zlib
+LOCAL_C_INCLUDES := external/sqlite/dist external/zlib system/core
 
 LOCAL_SRC_FILES:= aplogd.c log_io.c rambuf.c aplogd_util.c
 

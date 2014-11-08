@@ -76,9 +76,11 @@
 #define AID_SDCARD_PICS   1033  /* external storage photos access */
 #define AID_SDCARD_AV     1034  /* external storage audio/video access */
 #define AID_SDCARD_ALL    1035  /* access all users external storage */
-#define AID_AUDIT         1036  /* audit daemon */
-#define AID_FM_RADIO      1037  /* FM radio */
-#define AID_SMARTCARD     1138  /* smart card subsystem */
+#define AID_LOGD          1036  /* log daemon */
+#define AID_SHARED_RELRO  1037  /* creator of shared GNU RELRO files */
+#define AID_AUDIT         1038  /* audit daemon */
+#define AID_FM_RADIO      1039  /* FM radio */
+#define AID_SMARTCARD     1140  /* smart card subsystem */
 
 #define AID_THEMEMAN      1300  /* theme manager */
 
@@ -116,6 +118,7 @@
 #define AID_SPRINT_EXTENSION 9013  /* IKASANTISPRINT-149 sprint extension service */
 #define AID_MOT_DBVC      9014  /* mot_dbvc - This group is used to access DataBlock feature related data */
 
+#define AID_EVERYBODY     9997  /* shared between all apps in the same profile */
 #define AID_MISC          9998  /* access to misc storage */
 #define AID_NOBODY        9999
 
@@ -175,6 +178,8 @@ static const struct android_id_info android_ids[] = {
     { "sdcard_pics",   AID_SDCARD_PICS, },
     { "sdcard_av",     AID_SDCARD_AV, },
     { "sdcard_all",    AID_SDCARD_ALL, },
+    { "logd",          AID_LOGD, },
+    { "shared_relro",  AID_SHARED_RELRO, },
 
     { "shell",         AID_SHELL, },
     { "cache",         AID_CACHE, },
@@ -210,6 +215,7 @@ static const struct android_id_info android_ids[] = {
     { "sprint_extension", AID_SPRINT_EXTENSION, },
     { "mot_dbvc",	AID_MOT_DBVC, },
 
+    { "everybody",     AID_EVERYBODY, },
     { "misc",          AID_MISC, },
     { "nobody",        AID_NOBODY, },
     { "theme_man", AID_THEMEMAN },
@@ -243,6 +249,7 @@ static const struct fs_path_config android_dirs[] = {
     { 00771, AID_SHELL,  AID_SHELL,  0, "data/local" },
     { 01771, AID_SYSTEM, AID_MISC,   0, "data/misc" },
     { 00770, AID_DHCP,   AID_DHCP,   0, "data/misc/dhcp" },
+    { 00771, AID_SHARED_RELRO, AID_SHARED_RELRO, 0, "data/misc/shared_relro" },
     { 00775, AID_MEDIA_RW, AID_MEDIA_RW, 0, "data/media" },
     { 00775, AID_MEDIA_RW, AID_MEDIA_RW, 0, "data/media/Music" },
     { 00771, AID_SYSTEM, AID_SYSTEM, 0, "data" },
@@ -287,7 +294,7 @@ static const struct fs_path_config android_files[] = {
 
     /* the following five files are INTENTIONALLY set-uid, but they
      * are NOT included on user builds. */
-    { 06755, AID_ROOT,      AID_ROOT,      0, "system/xbin/su" },
+    { 04750, AID_ROOT,      AID_SHELL,     0, "system/xbin/su" },
     { 06755, AID_ROOT,      AID_ROOT,      0, "system/xbin/librank" },
     { 06755, AID_ROOT,      AID_ROOT,      0, "system/xbin/procrank" },
     { 06755, AID_ROOT,      AID_ROOT,      0, "system/xbin/procmem" },
@@ -297,15 +304,17 @@ static const struct fs_path_config android_files[] = {
     /* the following files have enhanced capabilities and ARE included in user builds. */
     { 00750, AID_ROOT,      AID_SHELL,     (1 << CAP_SETUID) | (1 << CAP_SETGID), "system/bin/run-as" },
 
+    { 00750, AID_ROOT,      AID_ROOT,      0, "system/bin/uncrypt" },
+    { 00750, AID_ROOT,      AID_ROOT,      0, "system/bin/install-recovery.sh" },
     { 00755, AID_ROOT,      AID_SHELL,     0, "system/bin/*" },
     { 00755, AID_ROOT,      AID_ROOT,      0, "system/lib/valgrind/*" },
+    { 00755, AID_ROOT,      AID_ROOT,      0, "system/lib64/valgrind/*" },
     { 00755, AID_ROOT,      AID_SHELL,     0, "system/xbin/*" },
     { 00755, AID_ROOT,      AID_SHELL,     0, "system/vendor/bin/*" },
     { 00755, AID_ROOT,      AID_SHELL,     0, "vendor/bin/*" },
     { 00750, AID_ROOT,      AID_SHELL,     0, "sbin/*" },
     { 00755, AID_ROOT,      AID_ROOT,      0, "bin/*" },
     { 00750, AID_ROOT,      AID_SHELL,     0, "init*" },
-    { 00750, AID_ROOT,      AID_SHELL,     0, "charger*" },
     { 00750, AID_ROOT,      AID_SHELL,     0, "sbin/fs_mgr" },
     { 00640, AID_ROOT,      AID_SHELL,     0, "fstab.*" },
     { 00755, AID_ROOT,      AID_SHELL,     0, "system/etc/init.d/*" },

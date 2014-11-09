@@ -37,7 +37,7 @@
 
 #include "init_msm.h"
 
-void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
+void vendor_load_properties()
 {
     char platform[PROP_VALUE_MAX];
     char radio[PROP_VALUE_MAX];
@@ -47,10 +47,6 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     char fstype[92];
     FILE *fp;
     int rc;
-
-    UNUSED(msm_id);
-    UNUSED(msm_ver);
-    UNUSED(board_type);
 
     rc = property_get("ro.board.platform", platform);
     if (!rc || !ISMATCH(platform, ANDROID_TARGET))

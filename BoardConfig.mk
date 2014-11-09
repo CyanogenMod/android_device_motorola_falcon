@@ -90,8 +90,7 @@ USE_OPENGL_RENDERER := true
 TARGET_HW_DISK_ENCRYPTION := true
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_falcon.c
+TARGET_INIT_VENDOR_LIB := libinit_falcon
 TARGET_UNIFIED_DEVICE := true
 
 # Lights

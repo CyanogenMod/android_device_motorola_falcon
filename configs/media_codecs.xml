@@ -19,6 +19,8 @@
      for attribution purposes only.
 -->
 <MediaCodecs>
+	<Include href="media_codecs_google_audio.xml" />
+	<Include href="media_codecs_google_telephony.xml" />
     <Encoders>
         <!-- Audio Hardware  -->
         <MediaCodec name="OMX.google.aac.encoder" type="audio/mp4a-latm" />

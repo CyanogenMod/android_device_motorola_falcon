@@ -354,8 +354,8 @@
 		<ctl name="SLIM RX1 MUX" value="AIF1_PB" />
 		<ctl name="SLIM RX2 MUX" value="AIF1_PB" />
 		<ctl name="SLIM_0_RX Channels" value="Two" />
-		<ctl name="RX1 MIX1 INP1" value="RX2" />
-		<ctl name="RX2 MIX1 INP1" value="RX1" />
+		<ctl name="RX1 MIX1 INP1" value="RX1" />
+		<ctl name="RX2 MIX1 INP1" value="RX2" />
 		<ctl name="CLASS_H_DSM MUX" value="RX_HPHL" />
 		<ctl name="RDAC3 MUX" value="DEM2" />
 		<ctl name="HPHL DAC Switch" value="1" />
@@ -411,8 +411,8 @@
 		<ctl name="SLIM RX1 MUX" value="AIF1_PB" />
 		<ctl name="SLIM RX2 MUX" value="AIF1_PB" />
 		<ctl name="SLIM_0_RX Channels" value="Two" />
-		<ctl name="RX1 MIX1 INP1" value="RX2" />
-		<ctl name="RX2 MIX1 INP1" value="RX1" />
+		<ctl name="RX1 MIX1 INP1" value="RX1" />
+		<ctl name="RX2 MIX1 INP1" value="RX2" />
 		<ctl name="CLASS_H_DSM MUX" value="RX_HPHL" />
 		<ctl name="RDAC3 MUX" value="DEM2" />
 		<ctl name="HPHL DAC Switch" value="1" />
@@ -434,8 +434,8 @@
 		<ctl name="AIF1_CAP Mixer SLIM TX1" value="1" />
 		<ctl name="AIF1_CAP Mixer SLIM TX2" value="1" />
 		<ctl name="SLIM_0_TX Channels" value="Two" />
-		<ctl name="SLIM TX1 MUX" value="DEC2" />
-		<ctl name="SLIM TX2 MUX" value="DEC1" />
+		<ctl name="SLIM TX1 MUX" value="DEC1" />
+		<ctl name="SLIM TX2 MUX" value="DEC2" />
 		<ctl name="DEC1 MUX" value="ADC1" />
 		<ctl name="DEC2 MUX" value="ADC3" />
 		<ctl name="ADC1 Volume" value="19" />

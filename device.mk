@@ -223,9 +223,14 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
+    dhcpcd.conf \
     hostapd.accept \
     hostapd.deny \
-    hostapd_default.conf
+    hostapd_default.conf \
+    libwpa_client \
+    hostapd \
+    wpa_supplicant \
+    wpa_supplicant.conf
 
 PRODUCT_PACKAGES += \
     p2p_supplicant_overlay.conf \

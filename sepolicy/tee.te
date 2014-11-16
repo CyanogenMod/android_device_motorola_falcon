@@ -1,7 +1,0 @@
-# Qualcomm Secure Execution Environment Communicator policy
-allow tee self:process execmem;
-
-# Access /persist/drm/widevine
-allow tee persist_file:dir search;
-allow tee persist_drm_file:dir r_dir_perms;
-allow tee persist_drm_file:file r_file_perms;

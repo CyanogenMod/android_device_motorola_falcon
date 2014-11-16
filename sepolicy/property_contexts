@@ -1,2 +1,0 @@
-net.rmnet_usb0.                 u:object_r:radio_prop:s0
-sys.media.vdec.sw               u:object_r:performance_prop:s0

@@ -1,1 +1,0 @@
-allow netd self:capability fsetid;

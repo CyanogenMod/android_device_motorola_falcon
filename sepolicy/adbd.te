@@ -1,2 +1,0 @@
-allow adbd system_data_file:file open;
-allow adbd tmpfs:lnk_file read;

@@ -1,4 +1,0 @@
-allow init_shell sysfs_writable:file setattr;
-#su
-allow init_shell device:fifo_file { read write ioctl getattr };
-

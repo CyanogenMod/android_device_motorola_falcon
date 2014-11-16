@@ -1,4 +1,2 @@
-Universal device configuration for the Moto G (falcon)
+CyanogenMod Lollipop 5.0 for Moto G (“Falcon”)
 ===============================
-
-Copyright 2014 - The CyanogenMod Project

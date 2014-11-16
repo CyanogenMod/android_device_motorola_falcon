@@ -114,13 +114,13 @@
 
     <!-- Vibrator pattern to be used as for notifications while alerts
          are disabled (e.g. during phone calls) if enabled by the user.
-     -->
+    
     <integer-array name="config_notificationNoAlertsVibePattern">
         <item>0</item>
         <item>30</item>
         <item>75</item>
         <item>30</item>
-    </integer-array>
+    </integer-array> -->
 
     <!-- If the DUN connection for this CDMA device supports more than just DUN -->
     <!-- traffic you should list them here. -->
@@ -184,11 +184,11 @@
          The default is false. -->
     <bool name="config_lidControlsSleep">true</bool>
 
-    <!-- Device supports LED flashlight -->
-    <bool name="config_enableTorch">true</bool>
+    <!-- Device supports LED flashlight
+    <bool name="config_enableTorch">true</bool> -->
 
-    <!-- Boolean indicating whether Softap requires reloading AP firmware -->
-    <bool name="config_wifiApFirmwareReload">false</bool>
+    <!-- Boolean indicating whether Softap requires reloading AP firmware
+    <bool name="config_wifiApFirmwareReload">false</bool> -->
 
     <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
         on the headphone/microphone jack. When false use the older uevent framework. -->
@@ -211,9 +211,9 @@
         config to 7. -->
     <integer name="config_deviceHardwareKeys">0</integer>
 
-    <!-- Performance profiles -->
+    <!-- Performance profiles
     <string name="config_perf_profile_prop">sys.perf.profile</string>
-    <string name="config_perf_profile_default_entry">1</string>
+    <string name="config_perf_profile_default_entry">1</string> -->
 
     <!-- Component name of the geofence services provider. -->
     <string name="config_geofenceServicesProvider" translatable="false">com.motorola.motgeofencesvc</string>
@@ -224,8 +224,8 @@
     <!-- Default interface to monitor data use -->
     <string name="config_datause_iface">rmnet0</string>
 
-    <!-- Whether to enable auto provisioning the app for new SIM card on boot.-->
-    <bool name="config_auto_provision_enable">true</bool>
+    <!-- Whether to enable auto provisioning the app for new SIM card on boot.
+    <bool name="config_auto_provision_enable">true</bool>-->
 
     <!-- Boolean indicating if restoring network selection should be skipped -->
     <!-- The restoring is handled by modem if it is true-->

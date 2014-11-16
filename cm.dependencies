@@ -4,19 +4,23 @@
     "target_path": "device/qcom/common"
   },
   {
-    "repository": "android_kernel_motorola_msm8226",
-    "target_path": "kernel/motorola/msm8226"
-  },
-  {
     "repository": "android_hardware_qcom_fm",
     "target_path": "hardware/qcom/fm"
   },
   {
-    "repository": "android_hardware_qcom_display-caf-new",
-    "target_path": "hardware/qcom/display-caf-new"
+    "repository": "android_device_qcom_sepolicy",
+    "target_path": "device/qcom/sepolicy"
   },
   {
-    "repository": "android_hardware_qcom_media-caf-new",
-    "target_path": "hardware/qcom/media-caf-new"
+    "repository": "Alberto97/android_kernel_motorola_msm8226",
+    "remote": "github",
+    "branch": "lollipop-dev",
+    "target_path": "kernel/motorola/msm8226"
+  },
+  {
+    "repository": "TheMuppets/proprietary_vendor_motorola",
+    "remote": "github",
+    "branch": "cm-12.0",
+    "target_path": "vendor/motorola"
   }
 ]

@@ -140,6 +140,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
 
+# Keymaster
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/keymaster/keymaster.b00:system/vendor/firmware/keymaster/keymaster.b00 \
+    $(LOCAL_PATH)/configs/keymaster/keymaster.b01:system/vendor/firmware/keymaster/keymaster.b01 \
+    $(LOCAL_PATH)/configs/keymaster/keymaster.b02:system/vendor/firmware/keymaster/keymaster.b02 \
+    $(LOCAL_PATH)/configs/keymaster/keymaster.b03:system/vendor/firmware/keymaster/keymaster.b03 \
+    $(LOCAL_PATH)/configs/keymaster/keymaster.mdt:system/vendor/firmware/keymaster/keymaster.mdt
+
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8226

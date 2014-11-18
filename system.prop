@@ -12,9 +12,6 @@ av.streaming.offload.enable=false
 
 mm.enable.smoothstreaming=true
 
-# Default to AwesomePlayer
-media.stagefright.use-awesome=true
-
 persist.audio.calfile0=/etc/Bluetooth_cal.acdb
 persist.audio.calfile1=/etc/General_cal.acdb
 persist.audio.calfile2=/etc/Global_cal.acdb

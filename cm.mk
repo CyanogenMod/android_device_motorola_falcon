@@ -23,9 +23,6 @@ $(call inherit-product, device/motorola/falcon/device.mk)
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
-# Inherit APNs list
-$(call inherit-product, vendor/cm/config/gsm.mk)
-
 # Device identifier. This must come after all inclusions
 PRODUCT_RELEASE_NAME := MOTO G
 PRODUCT_DEVICE := falcon

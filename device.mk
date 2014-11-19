@@ -118,12 +118,13 @@ PRODUCT_PACKAGES += \
 # Filesystem
 PRODUCT_PACKAGES += \
     e2fsck \
-    fibmap.f2fs \
     fsck.f2fs \
     make_ext4fs \
     mkfs.f2fs \
     resize2fs \
-    setup_fs
+    setup_fs \
+    make_f2fs \
+    mkf2fsuserimg.sh
 
 # FM
 PRODUCT_PACKAGES += \
@@ -205,10 +206,7 @@ PRODUCT_PACKAGES += \
     mount_pds.sh
 
 PRODUCT_PACKAGES += \
-    bbx \
     fstab.qcom \
-    gpe-fstab.qcom \
-    gpecheck.sh \
     init.mmi.boot.sh \
     init.mmi.touch.sh \
     init.qcom.rc \

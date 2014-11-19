@@ -123,7 +123,7 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10485760
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1023410176
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 5930614784
+#BOARD_USERDATAIMAGE_PARTITION_SIZE := 5930614784
 
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
@@ -136,7 +136,15 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_RECOVERY_FSTYPE_MOUNT_OPTIONS := ext4=max_batch_time=0,commit=1,data=ordered,nobarrier,errors=panic,nodelalloc|f2fs=errors=recover
+BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
+$(warning "USING F2FS for userdata")
+
+# This ensures the needed build tools are available.
+# TODO: make non-linux builds happy with external/f2fs-tool; system/extras/f2fs_utils
+ifeq ($(HOST_OS),linux)
 TARGET_USERIMAGES_USE_F2FS := true
+endif
 
 # Vold
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true

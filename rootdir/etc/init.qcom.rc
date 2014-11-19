@@ -70,9 +70,6 @@ on init
     symlink /storage/usbdisk /usbdisk
     symlink /storage/usbdisk /mnt/usbdisk
 
-    chmod 755 /gpecheck.sh
-    exec /gpecheck.sh
-
     # CM: We use our own ril-daemon service definition, see mmi-ril-daemon
     stop ril-daemon
 

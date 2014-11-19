@@ -1,6 +1,4 @@
 on init
-    chmod 755 /gpecheck.sh
-    exec /gpecheck.sh
 
 on boot
     # Enable Power modes and set the CPU Freq Sampling rates

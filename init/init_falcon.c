@@ -44,7 +44,6 @@ void vendor_load_properties()
     char device[PROP_VALUE_MAX];
     char devicename[PROP_VALUE_MAX];
     char cdma_variant[92];
-    char fstype[92];
     FILE *fp;
     int rc;
 
@@ -56,18 +55,7 @@ void vendor_load_properties()
     fp = popen("/system/bin/ls -la /fsg/falcon_3.img.gz | /system/xbin/cut -d '_' -f3", "r");
     fgets(cdma_variant, sizeof(cdma_variant), fp);
     pclose(fp);
-    fp = popen("/system/bin/blkid /dev/block/platform/msm_sdcc.1/by-name/userdata | /system/xbin/cut -d ' ' -f3", "r");
-    fgets(fstype, sizeof(fstype), fp);
-    pclose(fp);
-    if (strstr(fstype, "ext4")) {
-        /* xt1032 GPE */
-        property_set("ro.product.device", "falcon_gpe");
-        property_set("ro.build.description", "falcon_gpe-user 4.4.4 KTU84P.M003 18 release-keys");
-        property_set("ro.build.fingerprint", "motorola/falcon_gpe/falcon_umts:4.4.4/KTU84P.M003/18:user/release-keys");
-        property_set("ro.mot.build.customerid", "retusa_glb");
-        property_set("ro.telephony.default_network", "0");
-        property_set("persist.radio.multisim.config", "");
-    } else if (ISMATCH(radio, "0x1")) {
+    if (ISMATCH(radio, "0x1")) {
         /* xt1032 */
         property_set("ro.product.device", "falcon_umts");
         property_set("ro.build.description", "falcon_retgb-user 4.4.4 KXB21.14-L1.40 36 release-keys");
@@ -132,5 +120,5 @@ void vendor_load_properties()
     property_set("ro.product.model", "Moto G");
     property_get("ro.product.device", device);
     strlcpy(devicename, device, sizeof(devicename));
-    INFO("Found radio id: %s data %s setting build properties for %s device\n", radio, fstype, devicename);
+    INFO("Found radio id: %s data %s setting build properties for %s device\n", radio, devicename);
 }

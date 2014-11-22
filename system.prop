@@ -64,7 +64,6 @@ persist.rild.nitz_short_ons_3=
 
 # qualcomm
 persist.timed.enable=true
-qcom.hw.aac.encoder=true
 ro.qualcomm.cabl=0
 ro.vendor.extension_library=/system/vendor/lib/libqc-opt.so
 

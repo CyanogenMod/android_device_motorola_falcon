@@ -141,7 +141,7 @@ public:
         return mLocApi->requestXtraServer();
     }
     inline enum loc_api_adapter_err
-        atlOpenStatus(int handle, int is_succ, char* apn, AGpsBearerType bearer, AGpsType agpsType)
+        atlOpenStatus(int handle, int is_succ, char* apn, ApnIpType bearer, AGpsType agpsType)
     {
         return mLocApi->atlOpenStatus(handle, is_succ, apn, bearer, agpsType);
     }

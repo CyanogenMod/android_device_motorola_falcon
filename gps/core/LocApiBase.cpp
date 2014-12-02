@@ -370,7 +370,7 @@ DEFAULT_IMPL(LOC_API_ADAPTER_ERR_SUCCESS)
 
 enum loc_api_adapter_err LocApiBase::
    atlOpenStatus(int handle, int is_succ, char* apn,
-                 AGpsBearerType bear, AGpsType agpsType)
+                ApnIpType bear, AGpsType agpsType)
 DEFAULT_IMPL(LOC_API_ADAPTER_ERR_SUCCESS)
 
 enum loc_api_adapter_err LocApiBase::

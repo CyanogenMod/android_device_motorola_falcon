@@ -198,7 +198,7 @@ const void* loc_eng_get_extension(loc_eng_data_s_type &loc_eng_data,
 void loc_eng_agps_init(loc_eng_data_s_type &loc_eng_data,
                        AGpsExtCallbacks* callbacks);
 int  loc_eng_agps_open(loc_eng_data_s_type &loc_eng_data, AGpsExtType agpsType,
-                      const char* apn, AGpsBearerType bearerType);
+                      const char* apn, ApnIpType bearerType);
 int  loc_eng_agps_closed(loc_eng_data_s_type &loc_eng_data, AGpsExtType agpsType);
 int  loc_eng_agps_open_failed(loc_eng_data_s_type &loc_eng_data, AGpsExtType agpsType);
 

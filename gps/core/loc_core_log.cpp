@@ -143,15 +143,14 @@ const char* loc_get_aiding_data_mask_names(GpsAidingData data)
 
 static loc_name_val_s_type loc_eng_agps_types[] =
 {
-    NAME_VAL( AGPS_TYPE_INVALID ),
-    NAME_VAL( AGPS_TYPE_ANY ),
-    NAME_VAL( AGPS_TYPE_SUPL ),
-    NAME_VAL( AGPS_TYPE_C2K ),
-    NAME_VAL( AGPS_TYPE_WWAN_ANY )
+	NAME_VAL( APN_IP_INVALID ),
+	NAME_VAL( APN_IP_IPV4 ),
+	NAME_VAL( APN_IP_IPV4 ),
+	NAME_VAL( APN_IP_IPV4V6 )
 };
 static int loc_eng_agps_type_num = sizeof(loc_eng_agps_types) / sizeof(loc_name_val_s_type);
 
-const char* loc_get_agps_type_name(AGpsType type)
+const char* loc_get_agps_bear_name(ApnIpType bearer)
 {
     return loc_get_name_from_val(loc_eng_agps_types, loc_eng_agps_type_num, (long) type);
 }

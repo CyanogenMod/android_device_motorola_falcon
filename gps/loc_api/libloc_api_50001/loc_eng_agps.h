@@ -200,7 +200,7 @@ private:
     // for convenience, we don't do strlen each time.
     unsigned int mAPNLen;
     // bear
-    AGpsBearerType mBearer;
+    ApnIpType mBearer;
     // ipv4 address for routing
     bool mEnforceSingleSubscriber;
 
@@ -212,8 +212,8 @@ public:
     // self explanatory methods below
     void setAPN(const char* apn, unsigned int len);
     inline const char* getAPN() const { return (const char*)mAPN; }
-    inline void setBearer(AGpsBearerType bearer) { mBearer = bearer; }
-    inline AGpsBearerType getBearer() const { return mBearer; }
+    inline void setBearer(ApnIpType bearer) { mBearer = bearer; }
+    inline ApnIpType getBearer() const { return mBearer; }
     inline AGpsExtType getType() const { return (AGpsExtType)mType; }
 
     // someone, a ATL client or BIT, is asking for NIF

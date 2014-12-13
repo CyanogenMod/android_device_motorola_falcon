@@ -879,7 +879,7 @@ typedef struct {
     RIL_EVDO_SignalStrength EVDO_SignalStrength;
     RIL_ATT_SignalStrength  ATT_SignalStrength;
     RIL_LTE_SignalStrength  LTE_SignalStrength;
-} RIL_SignalStrength_HTC;
+} RIL_SignalStrength_MOTO;
 
 /** RIL_CellIdentityGsm */
 typedef struct {
@@ -4692,7 +4692,7 @@ typedef RIL_RadioState (*RIL_RadioStateRequest)(RIL_SOCKET_ID socket_id);
 /* Backward compatible */
 
 /**
- * Custom responses for HTCQualcommRIL.java
+ * Custom responses for MOTOQualcommRIL.java
  */
 #define RIL_UNSOL_ENTER_LPM 1523
 #define RIL_UNSOL_CDMA_3G_INDICATOR 3009
@@ -4701,7 +4701,7 @@ typedef RIL_RadioState (*RIL_RadioStateRequest)(RIL_SOCKET_ID socket_id);
 #define RIL_UNSOL_RESPONSE_PHONE_MODE_CHANGE_M7 4802
 #define RIL_UNSOL_RESPONSE_PHONE_MODE_CHANGE 6002
 #define RIL_UNSOL_RESPONSE_VOICE_RADIO_TECH_CHANGED 21004
-#define RIL_UNSOL_RESPONSE_IMS_NETWORK_STATE_CHANGED_HTC 21005
+#define RIL_UNSOL_RESPONSE_IMS_NETWORK_STATE_CHANGED_MOTO 21005
 #define RIL_UNSOL_RESPONSE_DATA_NETWORK_STATE_CHANGED 21007
 #define RIL_UNSOL_RESPONSE_DATA_NETWORK_STATE_CHANGED_M7 5757
 /***********************************************************************/

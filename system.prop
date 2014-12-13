@@ -3,6 +3,21 @@
 # radio
 rild.libargs=-d /dev/smd0
 rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
+ril.subscription.types=NV,RUIM
+ro.baseband.arch=msm
+ro.data.large_tcp_window_size=true
+ro.use_data_netmgrd=true
+persist.data.netmgrd.qos.enable=true
+persist.rild.nitz_plmn=
+persist.rild.nitz_long_ons_0=
+persist.rild.nitz_long_ons_1=
+persist.rild.nitz_long_ons_2=
+persist.rild.nitz_long_ons_3=
+persist.rild.nitz_short_ons_0=
+persist.rild.nitz_short_ons_1=
+persist.rild.nitz_short_ons_2=
+persist.rild.nitz_short_ons_3=
+DEVICE_PROVISIONED=1
 
 # usb
 ro.usb.mtp=0x2e82

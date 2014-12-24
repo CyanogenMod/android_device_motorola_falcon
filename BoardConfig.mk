@@ -39,5 +39,9 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 5930614784
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
+# RIL
+BOARD_PROVIDES_LIBRIL := true
+BOARD_RIL_CLASS := ../../../device/motorola/falcon/ril/
+
 # inherit from the proprietary version
 -include vendor/motorola/falcon/BoardConfigVendor.mk

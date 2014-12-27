@@ -63,24 +63,26 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     fp = popen("/system/bin/blkid /dev/block/platform/msm_sdcc.1/by-name/userdata | /system/xbin/cut -d ' ' -f3", "r");
     fgets(fstype, sizeof(fstype), fp);
     pclose(fp);
-    if (strstr(fstype, "ext4")) {
-        /* xt1032 GPE */
-        property_set("ro.product.device", "falcon_gpe");
-        property_set("ro.product.model", "Moto G");
-        property_set("ro.build.description", "falcon_gpe-user 4.4.4 KTU84P.M003 18 release-keys");
-        property_set("ro.build.fingerprint", "motorola/falcon_gpe/falcon_umts:4.4.4/KTU84P.M003/18:user/release-keys");
-        property_set("ro.mot.build.customerid", "retusa_glb");
-        property_set("ro.telephony.default_network", "0");
-        property_set("persist.radio.multisim.config", "");
-    } else if (ISMATCH(radio, "0x1")) {
-        /* xt1032 */
-        property_set("ro.product.device", "falcon_umts");
-        property_set("ro.product.model", "Moto G");
-        property_set("ro.build.description", "falcon_retgb-user 4.4.4 KXB21.14-L1.40 36 release-keys");
-        property_set("ro.build.fingerprint", "motorola/falcon_retgb/falcon_umts:4.4.4/KXB21.14-L1.40/36:user/release-keys");
-        property_set("ro.mot.build.customerid", "RTGB");
-        property_set("ro.telephony.default_network", "0");
-        property_set("persist.radio.multisim.config", "");
+    if (ISMATCH(radio, "0x1")) {
+        if (strstr(fstype, "ext4")) {
+            /* xt1032 GPE */
+            property_set("ro.product.device", "falcon_gpe");
+            property_set("ro.product.model", "Moto G");
+            property_set("ro.build.description", "falcon_gpe-user 4.4.4 KTU84P.M003 18 release-keys");
+            property_set("ro.build.fingerprint", "motorola/falcon_gpe/falcon_umts:4.4.4/KTU84P.M003/18:user/release-keys");
+            property_set("ro.mot.build.customerid", "retusa_glb");
+            property_set("ro.telephony.default_network", "0");
+            property_set("persist.radio.multisim.config", "");
+        } else {
+            /* xt1032 */
+            property_set("ro.product.device", "falcon_umts");
+            property_set("ro.product.model", "Moto G");
+            property_set("ro.build.description", "falcon_retgb-user 4.4.4 KXB21.14-L1.40 36 release-keys");
+            property_set("ro.build.fingerprint", "motorola/falcon_retgb/falcon_umts:4.4.4/KXB21.14-L1.40/36:user/release-keys");
+            property_set("ro.mot.build.customerid", "RTGB");
+            property_set("ro.telephony.default_network", "0");
+            property_set("persist.radio.multisim.config", "");
+        }
     } else if (ISMATCH(radio, "0x3")) {
         /* cdma */
         INFO("CDMA variant=%s", cdma_variant);

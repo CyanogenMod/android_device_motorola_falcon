@@ -438,9 +438,9 @@
 		<ctl name="SLIM TX2 MUX" value="DEC1" />
 		<ctl name="DEC1 MUX" value="ADC1" />
 		<ctl name="DEC2 MUX" value="ADC3" />
-		<ctl name="ADC1 Volume" value="8" />
+		<ctl name="ADC1 Volume" value="19" />
 		<ctl name="ADC2 Volume" value="0" />
-		<ctl name="ADC3 Volume" value="8" />
+		<ctl name="ADC3 Volume" value="19" />
 	</path>
 
 	<path name="camcorder-mic">

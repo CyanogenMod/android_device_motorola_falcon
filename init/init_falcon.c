@@ -70,6 +70,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
             property_set("ro.product.model", "Moto G");
             property_set("ro.build.description", "falcon_gpe-user 5.0.1 LRX21Z.M002 15 release-keys");
             property_set("ro.build.fingerprint", "motorola/falcon_gpe/falcon_umts:5.0.1/LRX21Z.M002/15:user/release-keys");
+            property_set("ro.build.product", "falcon");
             property_set("ro.mot.build.customerid", "retusa_glb");
             property_set("ro.telephony.default_network", "0");
             property_set("persist.radio.multisim.config", "");
@@ -79,6 +80,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
             property_set("ro.product.model", "Moto G");
             property_set("ro.build.description", "falcon_retgb-user 4.4.4 KXB21.14-L1.40 36 release-keys");
             property_set("ro.build.fingerprint", "motorola/falcon_retgb/falcon_umts:4.4.4/KXB21.14-L1.40/36:user/release-keys");
+            property_set("ro.build.product", "falcon");
             property_set("ro.mot.build.customerid", "RTGB");
             property_set("ro.telephony.default_network", "0");
             property_set("persist.radio.multisim.config", "");
@@ -92,6 +94,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
             property_set("ro.product.model", "Moto G");
             property_set("ro.build.description", "falcon_verizon-user 4.3 14.10.0Q3.X-84-14 16 release-keys");
             property_set("ro.build.fingerprint", "motorola/falcon_verizon/falcon_cdma:4.3/14.10.0Q3.X-84-14/16:user/release-keys");
+            property_set("ro.build.product", "falcon");
             property_set("persist.radio.multisim.config", "");
             property_set("ro.mot.build.customerid", "verizon");
             property_set("ro.cdma.home.operator.alpha", "Verizon");
@@ -105,6 +108,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
             property_set("ro.product.model", "Moto G");
             property_set("ro.build.description", "falcon_boost-user 4.4.2 KXB20.9-1.10-1.18 18 release-keys");
             property_set("ro.build.fingerprint", "motorola/falcon_boost/falcon_cdma:4.4.2/KXB20.9-1.10-1.18/18:user/release-keys");
+            property_set("ro.build.product", "falcon");
             property_set("persist.radio.multisim.config", "");
             property_set("ro.mot.build.customerid", "sprint");
             property_set("ro.cdma.home.operator.alpha", "Boost Mobile");
@@ -126,6 +130,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.product.model", "Moto G");
         property_set("ro.build.description", "falcon_retbr_ds-user 5.0 LXB22.46-16 16 release-keys");
         property_set("ro.build.fingerprint", "motorola/falcon_retbr_ds/falcon_umtsds:5.0/LXB22.46-16/16:user/release-keys");
+        property_set("ro.build.product", "falcon");
         property_set("ro.mot.build.customerid", "RETBR");
         property_set("ro.telephony.default_network", "0");
         property_set("persist.radio.multisim.config", "dsds");
@@ -137,6 +142,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.product.model", "Moto G");
         property_set("ro.build.description", "falcon_retuaws-user 4.4.3 KXB21.14-L1.32 30 release-keys");
         property_set("ro.build.fingerprint", "motorola/falcon_retuaws/falcon_umts:4.4.3/KXB21.14-L1.32/30:user/release-keys");
+        property_set("ro.build.product", "falcon");
         property_set("ro.mot.build.customerid", "retusa_aws");
         property_set("ro.telephony.default_network", "0");
         property_set("persist.radio.multisim.config", "");

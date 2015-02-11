@@ -1,5 +1,14 @@
 # proprietary files for falcon
 
+# Audio
+etc/Bluetooth_cal.acdb
+etc/General_cal.acdb
+etc/Global_cal.acdb
+etc/Handset_cal.acdb
+etc/Hdmi_cal.acdb
+etc/Headset_cal.acdb
+etc/Speaker_cal.acdb
+
 # Camera
 lib/hw/camera.msm8226.so
 lib/libmm-qcamera.so

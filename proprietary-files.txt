@@ -43,4 +43,5 @@ lib/libchromatix_ar0543_preview.so
 lib/libchromatix_ar0543_snapshot.so
 
 # Sensors
+bin/akmd8963
 lib/hw/sensors.msm8226.so

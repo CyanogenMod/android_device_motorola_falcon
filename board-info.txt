@@ -1,0 +1,1 @@
+require version-bootloader=0x4118

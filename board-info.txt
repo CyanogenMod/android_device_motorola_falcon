@@ -1,1 +1,1 @@
-require version-bootloader=0x4118
+require version-bootloader=0x4118|0x4119

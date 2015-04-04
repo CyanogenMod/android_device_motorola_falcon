@@ -1,0 +1,4 @@
+# system.prop for falcon
+
+# radio
+rild.libargs=-d /dev/smd0

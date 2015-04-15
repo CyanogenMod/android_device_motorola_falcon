@@ -60,13 +60,13 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     fp = popen("/system/bin/ls -la /fsg/falcon_3.img.gz | /system/xbin/cut -d '_' -f3", "r");
     fgets(cdma_variant, sizeof(cdma_variant), fp);
     pclose(fp);
-    fp = popen("/system/bin/blkid /dev/block/platform/msm_sdcc.1/by-name/userdata | /system/xbin/cut -d ' ' -f3", "r");
+    fp = popen("/system/bin/blkid /dev/block/platform/msm_sdcc.1/by-name/userdata | /system/xbin/grep -o 'TYPE=.*' | /system/xbin/cut -c7-10" , "r");
     fgets(fstype, sizeof(fstype), fp);
     pclose(fp);
 
     property_set("ro.product.model", "Moto G");
     if (ISMATCH(radio, "0x1")) {
-        if (strstr(fstype, "ext4")) {
+        if (ISMATCH(fstype, "ext4")) {
             /* xt1032 GPE */
             property_set("ro.product.device", "falcon_gpe");
             property_set("ro.build.description", "falcon_gpe-user 5.1 LMY47M.M001 6 release-keys");

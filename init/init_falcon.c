@@ -78,8 +78,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         } else {
             /* xt1032 */
             property_set("ro.product.device", "falcon_umts");
-            property_set("ro.build.description", "falcon_retgb-user 4.4.4 KXB21.14-L1.40 36 release-keys");
-            property_set("ro.build.fingerprint", "motorola/falcon_retgb/falcon_umts:4.4.4/KXB21.14-L1.40/36:user/release-keys");
+            property_set("ro.build.description", "falcon_retgb-user 5.0.2 LXB22.46-28.1 1 release-keys");
+            property_set("ro.build.fingerprint", "motorola/falcon_retgb/falcon_umts:5.0.2/LXB22.46-28.1/1:user/release-keys");
             property_set("ro.build.product", "falcon_umts");
             property_set("ro.mot.build.customerid", "RTGB");
             property_set("ro.telephony.default_network", "0");

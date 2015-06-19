@@ -3,8 +3,8 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 #<src>                                              <mnt_point>  <type>  <mnt_flags and options>                                                        <fs_mgr_flags>
 /dev/block/platform/msm_sdcc.1/by-name/system       /system      ext4    ro,barrier=1                                                                   wait
-/dev/block/platform/msm_sdcc.1/by-name/userdata     /data        ext4    rw,nosuid,nodev,noatime,nodiratime,noauto_da_alloc,nobarrier                   wait,check,encryptable=/dev/block/platform/msm_sdcc.1/by-name/metadata
-/dev/block/platform/msm_sdcc.1/by-name/userdata     /data        f2fs    rw,nosuid,nodev,noatime,nodiratime,inline_xattr,errors=recover                 wait,encryptable=footer,length=-16384
+/dev/block/platform/msm_sdcc.1/by-name/userdata     /data        ext4    rw,nosuid,nodev,noatime,nodiratime,noauto_da_alloc,nobarrier                   wait,check,encryptable=footer,length=-16384
+/dev/block/platform/msm_sdcc.1/by-name/userdata     /data        f2fs    rw,nosuid,nodev,noatime,nodiratime,inline_xattr                                wait,encryptable=footer,length=-16384
 /dev/block/platform/msm_sdcc.1/by-name/cache        /cache       ext4    rw,nosuid,nodev,noatime,nodiratime,data=writeback,noauto_da_alloc,barrier=1    wait,check
 /dev/block/platform/msm_sdcc.1/by-name/fsg          /fsg         ext4    ro,nosuid,nodev,barrier=0,context=u:object_r:firmware_file:s0                  wait,check
 /dev/block/platform/msm_sdcc.1/by-name/modem        /firmware    ext4    ro,nosuid,nodev,barrier=0,context=u:object_r:firmware_file:s0                  wait,check

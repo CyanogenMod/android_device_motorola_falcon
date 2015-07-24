@@ -26,7 +26,8 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    fstab.qcom
+    fstab.qcom \
+    init.qcom.rc
 
 # Wifi
 PRODUCT_COPY_FILES += \

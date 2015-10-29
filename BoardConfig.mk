@@ -25,7 +25,7 @@ TARGET_OTA_ASSERT_DEVICE := xt1031,xt1032,xt1033,xt1034,falcon_umts,falcon_umtsd
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
 
 # Kernel
-BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
+BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 TARGET_KERNEL_CONFIG := falcon_defconfig
 
 # Init

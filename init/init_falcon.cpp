@@ -123,16 +123,27 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.cdma.data_retry_config", "max_retries=infinite,0,0,10000,10000,100000,10000,10000,10000,10000,140000,540000,960000");
         property_set("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
     } else if (ISMATCH(radio, "0x5")) {
-        /* xt1033 */
-        property_set("ro.product.device", "falcon_umtsds");
-        property_set("ro.build.description", "falcon_retbr_ds-user 5.0.2 LXB22.46-28 27 release-keys");
-        property_set("ro.build.fingerprint", "motorola/falcon_retbr_ds/falcon_umtsds:5.0.2/LXB22.46-28/27:user/release-keys");
-        property_set("ro.build.product", "falcon_umtsds");
-        property_set("ro.mot.build.customerid", "RETBR");
-        property_set("ro.telephony.default_network", "0,1");
-        property_set("persist.radio.multisim.config", "dsds");
-        property_set("persist.radio.dont_use_dsd", "true");
-        property_set("persist.radio.plmn_name_cmp", "1");
+        if (ISMATCH(fstype, "ext4")) {
+            /* xt1033 converted to GPE */
+            property_set("ro.product.device", "falcon_gpe");
+            property_set("ro.build.description", "falcon_gpe-user 5.1 LMY47M.M001 6 release-keys");
+            property_set("ro.build.fingerprint", "motorola/falcon_gpe/falcon_umts:5.1/LMY47M.M001/6:user/release-keys");
+            property_set("ro.build.product", "falcon_gpe");
+            property_set("ro.mot.build.customerid", "retusa_glb");
+            property_set("ro.telephony.default_network", "0");
+            property_set("persist.radio.multisim.config", "");
+        } else {
+            /* xt1033 */
+            property_set("ro.product.device", "falcon_umtsds");
+            property_set("ro.build.description", "falcon_retbr_ds-user 5.0.2 LXB22.46-28 27 release-keys");
+            property_set("ro.build.fingerprint", "motorola/falcon_retbr_ds/falcon_umtsds:5.0.2/LXB22.46-28/27:user/release-keys");
+            property_set("ro.build.product", "falcon_umtsds");
+            property_set("ro.mot.build.customerid", "RETBR");
+            property_set("ro.telephony.default_network", "0,1");
+            property_set("persist.radio.multisim.config", "dsds");
+            property_set("persist.radio.dont_use_dsd", "true");
+            property_set("persist.radio.plmn_name_cmp", "1");
+        }
     } else if (ISMATCH(radio, "0x6")) {
         /* xt1034 */
         property_set("ro.product.device", "falcon_umts");

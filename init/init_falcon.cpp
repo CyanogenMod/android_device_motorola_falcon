@@ -57,10 +57,10 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         return;
 
     property_get("ro.boot.radio", radio);
-    fp = popen("/system/bin/ls -la /fsg/falcon_3.img.gz | /system/xbin/cut -d '_' -f3", "r");
+    fp = popen("/system/bin/ls -la /fsg/falcon_3.img.gz | /system/bin/cut -d '_' -f3", "r");
     fgets(cdma_variant, sizeof(cdma_variant), fp);
     pclose(fp);
-    fp = popen("/system/bin/blkid /dev/block/platform/msm_sdcc.1/by-name/userdata | /system/xbin/grep -o 'TYPE=.*' | /system/xbin/cut -c7-10" , "r");
+    fp = popen("/system/bin/blkid /dev/block/platform/msm_sdcc.1/by-name/userdata | /system/bin/cut -d'\"' -f4", "r");
     fgets(fstype, sizeof(fstype), fp);
     pclose(fp);
 

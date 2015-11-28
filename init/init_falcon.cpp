@@ -69,8 +69,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         if (ISMATCH(fstype, "ext4")) {
             /* xt1032 GPE */
             property_set("ro.product.device", "falcon_gpe");
-            property_set("ro.build.description", "falcon_gpe-user 5.1 LMY47M.M001 6 release-keys");
-            property_set("ro.build.fingerprint", "motorola/falcon_gpe/falcon_umts:5.1/LMY47M.M001/6:user/release-keys");
+            property_set("ro.build.description", "falcon_gpe-user 5.1 LMY47M.M005 10 release-keys");
+            property_set("ro.build.fingerprint", "motorola/falcon_gpe/falcon_umts:5.1/LMY47M.M005/10:user/release-keys");
             property_set("ro.build.product", "falcon_gpe");
             property_set("ro.mot.build.customerid", "retusa_glb");
             property_set("ro.telephony.default_network", "0");
@@ -78,8 +78,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         } else {
             /* xt1032 */
             property_set("ro.product.device", "falcon_umts");
-            property_set("ro.build.description", "falcon_retuglb-user 5.0.2 LXB22.99-36 35 release-keys");
-            property_set("ro.build.fingerprint", "motorola/falcon_retuglb/falcon_umts:5.0.2/LXB22.99-36/35:user/release-keys");
+            property_set("ro.build.description", "falcon_retuglb-user 5.1 LPB23.13-58 58 release-keys");
+            property_set("ro.build.fingerprint", "motorola/falcon_retuglb/falcon_umts:5.1/LPB23.13-58/58:user/release-keys");
             property_set("ro.build.product", "falcon_umts");
             property_set("ro.mot.build.customerid", "retusa_glb");
             property_set("ro.telephony.default_network", "0");
@@ -91,8 +91,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         if (ISMATCH(cdma_variant, "verizon")) {
             /* xt1028 */
             property_set("ro.product.device", "falcon_cdma");
-            property_set("ro.build.description", "falcon_verizon-user 4.3 14.10.0Q3.X-84-14 16 release-keys");
-            property_set("ro.build.fingerprint", "motorola/falcon_verizon/falcon_cdma:4.3/14.10.0Q3.X-84-14/16:user/release-keys");
+            property_set("ro.build.description", "falcon_verizon-user 5.1 LPB23.13-33.7 7 release-keys");
+            property_set("ro.build.fingerprint", "motorola/falcon_verizon/falcon_cdma:5.1/LPB23.13-33.7/7:user/release-keys");
             property_set("ro.build.product", "falcon_cdma");
             property_set("persist.radio.multisim.config", "");
             property_set("ro.mot.build.customerid", "verizon");
@@ -104,8 +104,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         } else {
             /* xt1031 */
             property_set("ro.product.device", "falcon_cdma");
-            property_set("ro.build.description", "falcon_boost_edf-user 5.0.2 LXB22.99-18 9 intcfg,release-keys");
-            property_set("ro.build.fingerprint", "motorola/falcon_boost_edf/falcon_cdma:5.0.2/LXB22.99-18/9:user/intcfg,release-keys");
+            property_set("ro.build.description", "falcon_boost-user 5.1 LPB23.13-56 55 release-keys");
+            property_set("ro.build.fingerprint", "motorola/falcon_boost/falcon_cdma:5.1/LPB23.13-56/55:user/release-keys");
             property_set("ro.build.product", "falcon_cdma");
             property_set("persist.radio.multisim.config", "");
             property_set("ro.mot.build.customerid", "sprint");
@@ -125,8 +125,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     } else if (ISMATCH(radio, "0x5")) {
         /* xt1033 */
         property_set("ro.product.device", "falcon_umtsds");
-        property_set("ro.build.description", "falcon_retbr_ds-user 5.0.2 LXB22.46-28 27 release-keys");
-        property_set("ro.build.fingerprint", "motorola/falcon_retbr_ds/falcon_umtsds:5.0.2/LXB22.46-28/27:user/release-keys");
+        property_set("ro.build.description", "falcon_retbr_ds-user 5.1 LPB23.13-56 58 release-keys");
+        property_set("ro.build.fingerprint", "motorola/falcon_retbr_ds/falcon_umtsds:5.1/LPB23.13-56/58:user/release-keys");
         property_set("ro.build.product", "falcon_umtsds");
         property_set("ro.mot.build.customerid", "RETBR");
         property_set("ro.telephony.default_network", "0,1");
@@ -137,8 +137,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     } else if (ISMATCH(radio, "0x6")) {
         /* xt1034 */
         property_set("ro.product.device", "falcon_umts");
-        property_set("ro.build.description", "falcon_retuaws-user 5.0.2 LXB22.99-36 19 release-keys");
-        property_set("ro.build.fingerprint", "motorola/falcon_retuaws/falcon_umts:5.0.2/LXB22.99-36/19:user/release-keys");
+        property_set("ro.build.description", "falcon_retuaws-user 5.1 LPB23.13-58 61 release-keys");
+        property_set("ro.build.fingerprint", "motorola/falcon_retuaws/falcon_umts:5.1/LPB23.13-58/61:user/release-keys");
         property_set("ro.build.product", "falcon_umts");
         property_set("ro.mot.build.customerid", "retusa_aws");
         property_set("ro.telephony.default_network", "0");

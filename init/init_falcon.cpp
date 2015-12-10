@@ -112,6 +112,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
             property_set("ro.cdma.home.operator.alpha", "Boost Mobile");
             property_set("ro.cdma.home.operator.numeric", "311870");
         }
+        property_set("ro.telephony.default_cdma_sub", "1");
         property_set("ro.telephony.default_network", "4");
         property_set("ro.telephony.gsm-routes-us-smsc", "1");
         property_set("persist.radio.vrte_logic", "2");

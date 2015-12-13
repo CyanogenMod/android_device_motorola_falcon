@@ -41,6 +41,7 @@ private:
     enum {
         ACC = 0,
         SO,
+        SM,
         NUM_SENSORS,
     };
 
@@ -51,6 +52,8 @@ private:
             return MODE_ACCEL;
         case SO:
             return MODE_ROTATE;
+        case SM:
+            return MODE_MOVEMENT;
         default:
             ALOGE("AccelerometerSensor: unknown index %d", index);
             return -EINVAL;

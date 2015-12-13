@@ -39,6 +39,7 @@ __BEGIN_DECLS
 #define ID_L  (3)
 #define ID_P  (4)
 #define ID_SO (5)
+#define ID_SM (6)
 
 /*****************************************************************************/
 
@@ -56,6 +57,8 @@ __BEGIN_DECLS
 #define EVENT_TYPE_ACCEL_Z          ABS_Z
 
 #define EVENT_TYPE_SO               MSC_RAW
+
+#define EVENT_TYPE_SM               MSC_GESTURE
 
 #define EVENT_TYPE_MAGV_X           ABS_RX
 #define EVENT_TYPE_MAGV_Y           ABS_RY

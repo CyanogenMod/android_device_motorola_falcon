@@ -25,7 +25,7 @@ AccelerometerSensor::AccelerometerSensor()
     : SensorBase("/dev/lis3dh", "accelerometer"),
       mEnabled(0),
       mOriEnabled(false),
-      mInputReader(6),
+      mInputReader(8),
       mPendingEventsMask(0),
       mPendingEventsFlushMask(0)
 {
@@ -38,6 +38,11 @@ AccelerometerSensor::AccelerometerSensor()
     mPendingEvents[SO].sensor = ID_SO;
     mPendingEvents[SO].type = SENSOR_TYPE_SCREEN_ORIENTATION;
     memset(mPendingEvents[SO].data, 0, sizeof(mPendingEvents[SO].data));
+
+    mPendingEvents[SM].version = sizeof(sensors_event_t);
+    mPendingEvents[SM].sensor = ID_SM;
+    mPendingEvents[SM].type = SENSOR_TYPE_SIGNIFICANT_MOTION;
+    memset(mPendingEvents[SM].data, 0, sizeof(mPendingEvents[SM].data));
 
     mPendingEventsFlush.version = META_DATA_VERSION;
     mPendingEventsFlush.sensor = 0;
@@ -53,6 +58,9 @@ AccelerometerSensor::~AccelerometerSensor()
 
     if (mEnabled & MODE_ROTATE)
         enable(ID_SO, 0);
+
+    if (mEnabled & MODE_MOVEMENT)
+        enable(ID_SM, 0);
 
     if (mOriEnabled)
         enable(ID_O, 0);
@@ -72,6 +80,10 @@ int AccelerometerSensor::enable(int32_t handle, int en)
     case ID_SO:
         ALOGV("Accelerometer (SO): enable=%d", en);
         mask = MODE_ROTATE;
+        break;
+    case ID_SM:
+        ALOGV("Accelerometer (SM): enable=%d", en);
+        mask = MODE_MOVEMENT;
         break;
     case ID_O:
         ALOGV("Accelerometer (ORI): enable=%d", en);
@@ -136,10 +148,27 @@ int AccelerometerSensor::setDelay(int32_t handle, int64_t ns)
     case ID_SO:
         ALOGV("Accelerometer (SO): ignoring delay=%lld", ns);
         return 0;
+    case ID_SM:
+        /* Significant motion sensors should not set any delay */
+        ALOGV("Accelerometer (SM): ignoring delay=%lld", ns);
+        return 0;
     }
 
     if (delay > ACC_MAX_DELAY / 1000)
         delay = ACC_MAX_DELAY / 1000;
+
+    switch (handle) {
+    case ID_A:
+        ALOGV("Accelerometer (ACC): delay=%d", delay);
+        break;
+    case ID_SO:
+        ALOGV("Accelerometer (SO): delay=%d", delay);
+        return 0;
+    case ID_SM:
+        /* Significant motion sensors should not set any delay */
+        ALOGV("Accelerometer (SM): delay=%d", delay);
+        return 0;
+    }
 
     ALOGV("Accelerometer: set delay=%lld ns", ns);
 
@@ -192,6 +221,9 @@ int AccelerometerSensor::readEvents(sensors_event_t* data, int count)
             if (event->code == EVENT_TYPE_SO) {
                 mPendingEventsMask |= 1 << SO;
                 mPendingEvents[SO].data[0] = event->value;
+            } else if (event->code == EVENT_TYPE_SM) {
+                mPendingEventsMask |= 1 << SM;
+                mPendingEvents[SM].data[0] = 1.f;
             } else {
                 ALOGE("Accelerometer: unknown event (type=%d, code=%d)",
                         type, event->code);
@@ -205,6 +237,10 @@ int AccelerometerSensor::readEvents(sensors_event_t* data, int count)
                         *data++ = mPendingEvents[i];
                         count--;
                         numEventReceived++;
+
+                        if (i == SM)
+                            /* Disable sensor automatically */
+                            enable(ID_SM, 0);
                     }
 
                     if (mPendingEventsFlushMask & (1 << i)) {
@@ -243,6 +279,9 @@ int AccelerometerSensor::flush(int handle)
     case ID_SO:
         id = SO;
         break;
+    case ID_SM:
+        /* One-shot sensors must return -EINVAL */
+        return -EINVAL;
     default:
         ALOGE("Accelerometer: unknown handle %d", handle);
         return -EINVAL;

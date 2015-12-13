@@ -34,6 +34,7 @@
 #define SENSORS_LIGHT_HANDLE              (ID_L)
 #define SENSORS_PROXIMITY_HANDLE          (ID_P)
 #define SENSORS_SCREEN_ORIENTATION_HANDLE (ID_SO)
+#define SENSORS_SIGNIFICANT_MOTION_HANDLE (ID_SM)
 
 /*****************************************************************************/
 
@@ -146,6 +147,24 @@ static struct sensor_t sSensorList[] = {
         .flags = SENSOR_FLAG_ON_CHANGE_MODE,
         .reserved = {}
     },
+    {
+        .name = "Movement Detection sensor",
+        .vendor = "ST Micro",
+        .version = 1,
+        .handle = SENSORS_SIGNIFICANT_MOTION_HANDLE,
+        .type = SENSOR_TYPE_SIGNIFICANT_MOTION,
+        .maxRange = 1.0f,
+        .resolution = 1.0f,
+        .power = 0.01f,
+        .minDelay = 0,
+        .fifoReservedEventCount = 0,
+        .fifoMaxEventCount = 0,
+        .stringType = SENSOR_STRING_TYPE_SIGNIFICANT_MOTION,
+        .requiredPermission = 0,
+        .maxDelay = 0,
+        .flags = SENSOR_FLAG_ONE_SHOT_MODE | SENSOR_FLAG_WAKE_UP,
+        .reserved = {}
+    },
 };
 
 static int open_sensors(const struct hw_module_t* module, const char* id,
@@ -215,6 +234,7 @@ private:
         switch (handle) {
         case ID_A:
         case ID_SO:
+        case ID_SM:
             return accel;
         case ID_M:
         case ID_O:

@@ -42,10 +42,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     char platform[PROP_VALUE_MAX];
     char radio[PROP_VALUE_MAX];
     char device[PROP_VALUE_MAX];
-    char devicename[PROP_VALUE_MAX];
     char cdma_variant[92];
     char fstype[92];
-    FILE *fp;
     int rc;
 
     UNUSED(msm_id);
@@ -55,17 +53,13 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     rc = property_get("ro.board.platform", platform);
     if (!rc || !ISMATCH(platform, ANDROID_TARGET))
         return;
-
     property_get("ro.boot.radio", radio);
-    fp = popen("/system/bin/ls -la /fsg/falcon_3.img.gz | /system/bin/cut -d '_' -f3", "r");
-    fgets(cdma_variant, sizeof(cdma_variant), fp);
-    pclose(fp);
-    fp = popen("/system/bin/blkid /dev/block/platform/msm_sdcc.1/by-name/userdata | /system/bin/cut -d'\"' -f4", "r");
-    fgets(fstype, sizeof(fstype), fp);
-    pclose(fp);
 
     property_set("ro.product.model", "Moto G");
     if (ISMATCH(radio, "0x1")) {
+        FILE *fp = popen("/system/bin/blkid /dev/block/platform/msm_sdcc.1/by-name/userdata | /system/bin/cut -d'\"' -f4", "r");
+        fgets(fstype, sizeof(fstype), fp);
+        pclose(fp);
         if (ISMATCH(fstype, "ext4")) {
             /* xt1032 GPE */
             property_set("ro.product.device", "falcon_gpe");
@@ -86,15 +80,14 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
             property_set("persist.radio.multisim.config", "");
         }
     } else if (ISMATCH(radio, "0x3")) {
-        /* cdma */
+        FILE *fp = popen("/system/bin/ls -la /fsg/falcon_3.img.gz | /system/bin/cut -d '_' -f3", "r");
+        fgets(cdma_variant, sizeof(cdma_variant), fp);
+        pclose(fp);
         INFO("CDMA variant=%s", cdma_variant);
         if (ISMATCH(cdma_variant, "verizon")) {
             /* xt1028 */
-            property_set("ro.product.device", "falcon_cdma");
             property_set("ro.build.description", "falcon_verizon-user 5.1 LPB23.13-33.7 7 release-keys");
             property_set("ro.build.fingerprint", "motorola/falcon_verizon/falcon_cdma:5.1/LPB23.13-33.7/7:user/release-keys");
-            property_set("ro.build.product", "falcon_cdma");
-            property_set("persist.radio.multisim.config", "");
             property_set("ro.mot.build.customerid", "verizon");
             property_set("ro.cdma.home.operator.alpha", "Verizon");
             property_set("ro.cdma.home.operator.numeric", "310004");
@@ -103,20 +96,20 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
             property_set("ro.com.google.clientidbase.yt", "android-verizon");
         } else {
             /* xt1031 */
-            property_set("ro.product.device", "falcon_cdma");
             property_set("ro.build.description", "falcon_boost-user 5.1 LPB23.13-56 55 release-keys");
             property_set("ro.build.fingerprint", "motorola/falcon_boost/falcon_cdma:5.1/LPB23.13-56/55:user/release-keys");
-            property_set("ro.build.product", "falcon_cdma");
-            property_set("persist.radio.multisim.config", "");
             property_set("ro.mot.build.customerid", "sprint");
             property_set("ro.cdma.home.operator.alpha", "Boost Mobile");
             property_set("ro.cdma.home.operator.numeric", "311870");
         }
+        property_set("ro.product.device", "falcon_cdma");
+        property_set("ro.build.product", "falcon_cdma");
         property_set("ro.telephony.default_cdma_sub", "1");
         property_set("ro.telephony.default_network", "4");
         property_set("ro.telephony.gsm-routes-us-smsc", "1");
         property_set("persist.radio.vrte_logic", "2");
         property_set("persist.radio.0x9e_not_callname", "1");
+        property_set("persist.radio.multisim.config", "");
         property_set("persist.radio.skip_data_check", "1");
         property_set("persist.ril.max.crit.qmi.fails", "4");
         property_set("ro.cdma.home.operator.isnan", "1");
@@ -147,6 +140,5 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     }
 
     property_get("ro.product.device", device);
-    strlcpy(devicename, device, sizeof(devicename));
-    INFO("Found radio id: %s data %s setting build properties for %s device\n", radio, fstype, devicename);
+    INFO("Found radio id: %s data %s setting build properties for %s device\n", radio, fstype, device);
 }

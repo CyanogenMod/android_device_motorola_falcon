@@ -37,12 +37,51 @@
 
 #include "init_msm.h"
 
+enum supported_carrier {
+    UNKNOWN = -1,
+    VERIZON,
+    BOOST,
+    USC,
+};
+
+/* Motorola relies on system properties to detect the carrier, however we
+ * don't have those properties set and we actually want to set them here.
+ * Calculate the md5 of /fsg/0.img.gz and compare it with a list of known
+ * checksums to detect the carrier.
+ */
+static struct {
+    const char *md5sum;
+    enum supported_carrier carrier;
+} fsg_md5_list[] = {
+    { "034c470658f4db2302de4266af89a6bd", VERIZON },
+    { "46ac94a79513898901b3b37cf7d9c3c8", BOOST },
+    { "f8e4cfd380062e643cfb460c15d08a48", USC },
+};
+
+enum supported_carrier detect_carrier()
+{
+    char fsg_md5[33];
+    FILE *fp;
+
+    fp = popen("/system/bin/md5sum -b /fsg/0.img.gz", "r");
+    fgets(fsg_md5, sizeof(fsg_md5), fp);
+    pclose(fp);
+
+    INFO("md5sum of /fsg/0.img.gz: %s\n", fsg_md5);
+    for (uint i = 0; i < ARRAY_SIZE(fsg_md5_list); i++) {
+        if (ISMATCH(fsg_md5_list[i].md5sum, fsg_md5))
+            return fsg_md5_list[i].carrier;
+    }
+    ERROR("Unknwon carrier, md5sum: %s\n", fsg_md5);
+
+    return UNKNOWN;
+}
+
 void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
 {
     char platform[PROP_VALUE_MAX];
     char radio[PROP_VALUE_MAX];
     char device[PROP_VALUE_MAX];
-    char cdma_variant[92];
     char fstype[92];
     int rc;
 
@@ -80,11 +119,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
             property_set("persist.radio.multisim.config", "");
         }
     } else if (ISMATCH(radio, "0x3")) {
-        FILE *fp = popen("/system/bin/ls -la /fsg/falcon_3.img.gz | /system/bin/cut -d '_' -f3", "r");
-        fgets(cdma_variant, sizeof(cdma_variant), fp);
-        pclose(fp);
-        INFO("CDMA variant=%s", cdma_variant);
-        if (ISMATCH(cdma_variant, "verizon")) {
+        enum supported_carrier carrier = detect_carrier();
+        if (carrier == VERIZON) {
             /* xt1028 */
             property_set("ro.build.description", "falcon_verizon-user 5.1 LPB23.13-33.7 7 release-keys");
             property_set("ro.build.fingerprint", "motorola/falcon_verizon/falcon_cdma:5.1/LPB23.13-33.7/7:user/release-keys");
@@ -94,13 +130,19 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
             property_set("ro.com.google.clientidbase.ms", "android-verizon");
             property_set("ro.com.google.clientidbase.am", "android-verizon");
             property_set("ro.com.google.clientidbase.yt", "android-verizon");
-        } else {
+        } else if (carrier == BOOST) {
             /* xt1031 */
             property_set("ro.build.description", "falcon_boost-user 5.1 LPB23.13-56 55 release-keys");
             property_set("ro.build.fingerprint", "motorola/falcon_boost/falcon_cdma:5.1/LPB23.13-56/55:user/release-keys");
             property_set("ro.mot.build.customerid", "sprint");
             property_set("ro.cdma.home.operator.alpha", "Boost Mobile");
             property_set("ro.cdma.home.operator.numeric", "311870");
+        } else if (carrier == USC) {
+            property_set("ro.build.description", "falcon_usc-user 5.1 LPB23.13-33.6 8 release-keys");
+            property_set("ro.build.fingerprint", "motorola/falcon_usc/falcon_cdma:5.1/LPB23.13-33.6/8:user/release-keys");
+            property_set("ro.mot.build.customerid", "usc");
+            property_set("ro.cdma.home.operator.alpha", "U.S. Cellular");
+            property_set("ro.cdma.home.operator.numeric", "311220");
         }
         property_set("ro.product.device", "falcon_cdma");
         property_set("ro.build.product", "falcon_cdma");

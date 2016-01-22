@@ -113,6 +113,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
             property_set("ro.com.google.clientidbase.ms", "android-verizon");
             property_set("ro.com.google.clientidbase.am", "android-verizon");
             property_set("ro.com.google.clientidbase.yt", "android-verizon");
+            property_set("persist.radio.nw_mtu_enabled", "true");
             break;
         case SPRINT:
             property_set("ro.build.description", "falcon_boost-user 5.1 LPB23.13-56 55 release-keys");
@@ -150,10 +151,16 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("persist.radio.multisim.config", "");
         property_set("persist.radio.skip_data_check", "1");
         property_set("persist.ril.max.crit.qmi.fails", "4");
+        property_set("persist.radio.call_type", "1");
+        property_set("persist.radio.mode_pref_nv10", "1");
+        property_set("persist.radio.snapshot_timer", "22");
+        property_set("persist.radio.snapshot_enabled", "1");
         property_set("ro.cdma.home.operator.isnan", "1");
         property_set("ro.cdma.otaspnumschema", "SELC,1,80,99");
         property_set("ro.cdma.data_retry_config", "max_retries=infinite,0,0,10000,10000,100000,10000,10000,10000,10000,140000,540000,960000");
         property_set("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
+        property_set("ro.mot.ignore_csim_appid", "true");
+        property_set("telephony.lteOnCdmaDevice", "0");
     } else if (ISMATCH(radio, "0x5")) {
         /* xt1033 */
         property_set("ro.product.device", "falcon_umtsds");

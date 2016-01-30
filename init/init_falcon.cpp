@@ -30,6 +30,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <fstream>
 
 #include "vendor_init.h"
 #include "property_service.h"
@@ -42,8 +43,22 @@ enum supported_carrier {
     UNKNOWN = -1,
     VERIZON,
     SPRINT,
+    BOOST,
     USC,
 };
+
+static enum supported_carrier detect_sprint_mvno(void)
+{
+    std::ifstream propFile("/persist/prop/ro_cust.prop");
+    std::string line;
+
+    while (std::getline(propFile, line)) {
+        if (line.find("ro.home.operator.carrierid=BOOST") != std::string::npos)
+            return BOOST;
+    }
+
+    return SPRINT;
+}
 
 static enum supported_carrier detect_carrier(void)
 {
@@ -55,7 +70,7 @@ static enum supported_carrier detect_carrier(void)
     } else if (access("/pds/public/usc", F_OK) != -1) {
         return USC;
     } else if (access("/persist/prop/ro_cust.prop", F_OK) != -1) {
-        return SPRINT;
+        return detect_sprint_mvno();
     }
 
     return UNKNOWN;
@@ -124,6 +139,16 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
             property_set("ro.com.google.clientidbase.ms", "android-sprint-mvno-us");
             property_set("ro.com.google.clientidbase.am", "android-sprint-mvno-us");
             property_set("ro.com.google.clientidbase.yt", "android-sprint-mvno-us");
+            break;
+        case BOOST:
+            property_set("ro.build.description", "falcon_boost-user 5.1 LPB23.13-56 55 release-keys");
+            property_set("ro.build.fingerprint", "motorola/falcon_boost/falcon_cdma:5.1/LPB23.13-56/55:user/release-keys");
+            property_set("ro.mot.build.customerid", "sprint");
+            property_set("ro.cdma.home.operator.alpha", "Boost Mobile");
+            property_set("ro.cdma.home.operator.numeric", "311870");
+            property_set("ro.com.google.clientidbase.ms", "android-boost-us");
+            property_set("ro.com.google.clientidbase.am", "android-boost-us");
+            property_set("ro.com.google.clientidbase.yt", "android-boost-us");
             break;
         case USC:
             property_set("ro.build.description", "falcon_usc-user 5.1 LPB23.13-33.6 8 release-keys");

@@ -193,7 +193,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.build.fingerprint", "motorola/falcon_retbr_ds/falcon_umtsds:5.1/LPB23.13-56/58:user/release-keys");
         property_set("ro.build.product", "falcon_umtsds");
         property_set("ro.mot.build.customerid", "RETBR");
-        property_set("ro.telephony.default_network", "0,1");
+        property_set("ro.telephony.default_network", "0,0");
         property_set("ro.telephony.ril.config", "simactivation");
         property_set("persist.radio.multisim.config", "dsds");
         property_set("persist.radio.dont_use_dsd", "true");

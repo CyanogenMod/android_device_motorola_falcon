@@ -84,6 +84,11 @@
 	<ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia5" value="0" />
 	<!-- fm end -->
 
+	<!-- Incall Recording -->
+	<ctl name="MultiMedia1 Mixer VOC_REC_UL" value="0" />
+	<ctl name="MultiMedia1 Mixer VOC_REC_DL" value="0" />
+	<!-- Incall Recording end -->
+
 	<!-- Voip -->
 	<ctl name="SLIM_0_RX_Voice Mixer Voip" value="0" />
 	<ctl name="Voip_Tx Mixer SLIM_0_TX_Voip" value="0" />

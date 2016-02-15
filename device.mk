@@ -28,6 +28,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     init.target.rc
 
+# Wifi
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+
 # CDMA APN list
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/apns-conf-cdma.xml:system/etc/apns-conf-cdma.xml

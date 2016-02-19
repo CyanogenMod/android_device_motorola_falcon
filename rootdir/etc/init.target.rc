@@ -26,6 +26,11 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+on init
+    wait /dev/block/platform/msm_sdcc.1/by-name/userdata
+    start detect-gpe
+    wait /.fstab_done
+
 on boot
     # AK9863 Magnetometer
     chown compass compass /sys/class/compass/akm8963/enable_acc
@@ -47,6 +52,14 @@ on boot
     chmod 0660 /sys/module/ct406/parameters/als_delay
 
 # Services start here
+
+service detect-gpe /sbin/detect-gpe
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:detect-gpe:s0
 
 service akmd8963 /system/bin/akmd8963
     class main

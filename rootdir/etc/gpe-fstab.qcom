@@ -1,0 +1,20 @@
+# Android fstab file.
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+#<src>                                              <mnt_point>  <type>  <mnt_flags and options>                                                        <fs_mgr_flags>
+/dev/block/platform/msm_sdcc.1/by-name/system       /system      ext4    ro,barrier=1                                                                   wait
+/dev/block/platform/msm_sdcc.1/by-name/userdata     /data        ext4    rw,nosuid,nodev,noatime,nodiratime,noauto_da_alloc,nobarrier                   wait,check,formattable,encryptable=/dev/block/platform/msm_sdcc.1/by-name/metadata
+/dev/block/platform/msm_sdcc.1/by-name/userdata     /data        f2fs    rw,nosuid,nodev,noatime,nodiratime,nobarrier,inline_data,inline_xattr          wait,check,formattable,encryptable=/dev/block/platform/msm_sdcc.1/by-name/metadata
+/dev/block/platform/msm_sdcc.1/by-name/cache        /cache       ext4    rw,nosuid,nodev,noatime,nodiratime,barrier=1,data=ordered                      wait,check,formattable
+/dev/block/platform/msm_sdcc.1/by-name/fsg          /fsg         ext4    ro,nosuid,nodev,barrier=0,context=u:object_r:firmware_file:s0                  wait
+/dev/block/platform/msm_sdcc.1/by-name/modem        /firmware    ext4    ro,nosuid,nodev,barrier=0,context=u:object_r:firmware_file:s0                  wait
+/dev/block/platform/msm_sdcc.1/by-name/persist      /persist     ext4    ro,nosuid,nodev,barrier=1                                                      wait
+/dev/block/platform/msm_sdcc.1/by-name/boot         /boot        emmc    defaults                                                                       recoveryonly
+/dev/block/platform/msm_sdcc.1/by-name/recovery     /recovery    emmc    defaults                                                                       recoveryonly
+
+# SDCard
+/devices/msm_sdcc.2/mmc_host*                       auto         auto    defaults                                                                       voldmanaged=sdcard1:auto,encryptable=userdata
+/devices/platform/msm_hsusb_host/usb*               auto         auto    defaults                                                                       voldmanaged=usb:auto
+
+# ZRAM
+/dev/block/zram0                                    none         swap    defaults                                                                       zramsize=268435456

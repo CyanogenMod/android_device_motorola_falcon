@@ -26,7 +26,14 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
+    init.recovery.target.rc \
     init.target.rc
+
+# GPE
+PRODUCT_PACKAGES += \
+    init.detect-gpe.rc \
+    gpe-fstab.qcom \
+    detect-gpe
 
 # Wifi
 PRODUCT_COPY_FILES += \

@@ -1,0 +1,4 @@
+on init
+    wait /dev/block/platform/msm_sdcc.1/by-name/userdata
+    exec u:r:detect-gpe:s0 -- /sbin/detect-gpe
+

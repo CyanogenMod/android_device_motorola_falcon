@@ -26,6 +26,8 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+import /init.detect-gpe.rc
+
 on boot
     # AK9863 Magnetometer
     chown compass compass /sys/class/compass/akm8963/enable_acc

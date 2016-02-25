@@ -416,8 +416,8 @@
 		<ctl name="CLASS_H_DSM MUX" value="RX_HPHL" />
 		<ctl name="RDAC3 MUX" value="DEM2" />
 		<ctl name="HPHL DAC Switch" value="1" />
-		<ctl name="HPHL Volume" value="11" />
-		<ctl name="HPHR Volume" value="11" />
+		<ctl name="HPHL Volume" value="14" />
+		<ctl name="HPHR Volume" value="14" />
 	</path>
 
 	<path name="headphones-lite">
@@ -473,8 +473,8 @@
 		<ctl name="CLASS_H_DSM MUX" value="RX_HPHL" />
 		<ctl name="RDAC3 MUX" value="DEM2" />
 		<ctl name="HPHL DAC Switch" value="1" />
-		<ctl name="HPHL Volume" value="11" />
-		<ctl name="HPHR Volume" value="11" />
+		<ctl name="HPHL Volume" value="14" />
+		<ctl name="HPHR Volume" value="14" />
 		<ctl name="RX3 MIX1 INP1" value="RX1" />
 		<ctl name="SPK DAC Switch" value="1" />
 	</path>
@@ -489,8 +489,8 @@
 		<ctl name="RDAC3 MUX" value="DEM2" />
 		<ctl name="HPHL DAC Switch" value="1" />
 		<ctl name="HPHR DAC Switch" value="1" />
-		<ctl name="HPHL Volume" value="11" />
-		<ctl name="HPHR Volume" value="11" />
+		<ctl name="HPHL Volume" value="14" />
+		<ctl name="HPHR Volume" value="14" />
 		<ctl name="RX3 MIX1 INP1" value="RX1" />
 		<ctl name="RDAC4 MUX" value="DEM2" />
 		<ctl name="RDAC5 MUX" value="DEM4" />
@@ -613,8 +613,8 @@
 		<ctl name="CLASS_H_DSM MUX" value="RX_HPHL" />
 		<ctl name="RDAC3 MUX" value="DEM2" />
 		<ctl name="HPHL DAC Switch" value="1" />
-		<ctl name="HPHL Volume" value="11" />
-		<ctl name="HPHR Volume" value="11" />
+		<ctl name="HPHL Volume" value="14" />
+		<ctl name="HPHR Volume" value="14" />
 	</path>
 
 	<path name="tty-headphones-lite">

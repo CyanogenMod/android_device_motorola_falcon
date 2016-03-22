@@ -24,6 +24,10 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
 
+# CMActions
+PRODUCT_PACKAGES += \
+    CMActions
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.target.rc

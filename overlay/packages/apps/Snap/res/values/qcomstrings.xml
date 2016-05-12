@@ -24,4 +24,7 @@
     <!-- Zero shutter lag-->
     <string name="pref_camera_zsl_default" translatable="false">off</string>
 
+    <!-- Denoise -->
+    <string name="pref_camera_denoise_default" translatable="false">denoise-on</string>
+
 </resources>

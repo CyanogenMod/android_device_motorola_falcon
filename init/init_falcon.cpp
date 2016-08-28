@@ -81,7 +81,6 @@ void vendor_load_properties()
     char platform[PROP_VALUE_MAX];
     char radio[PROP_VALUE_MAX];
     char device[PROP_VALUE_MAX];
-    char fstype[92];
     int rc;
 
     rc = property_get("ro.board.platform", platform);
@@ -203,5 +202,5 @@ void vendor_load_properties()
     }
 
     property_get("ro.product.device", device);
-    INFO("Found radio id: %s data %s setting build properties for %s device\n", radio, fstype, device);
+    INFO("Found radio id: %s, setting build properties for %s device\n", radio, device);
 }

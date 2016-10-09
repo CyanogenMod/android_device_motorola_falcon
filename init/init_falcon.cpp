@@ -37,41 +37,6 @@
 #include "log.h"
 #include "util.h"
 
-enum supported_carrier {
-    UNKNOWN = -1,
-    VERIZON,
-    SPRINT,
-    BOOST,
-    USC,
-};
-
-static enum supported_carrier detect_sprint_mvno(void)
-{
-    std::ifstream propFile("/persist/prop/ro_cust.prop");
-    std::string line;
-
-    while (std::getline(propFile, line)) {
-        if (line.find("ro.home.operator.carrierid=BOOST") != std::string::npos)
-            return BOOST;
-    }
-
-    return SPRINT;
-}
-
-static enum supported_carrier detect_carrier(void)
-{
-    std::string carrier = property_get("ro.boot.carrier");
-    if (carrier == "vzw") {
-        return VERIZON;
-    } else if (access("/pds/public/usc", F_OK) != -1) {
-        return USC;
-    } else if (access("/persist/prop/ro_cust.prop", F_OK) != -1) {
-        return detect_sprint_mvno();
-    }
-
-    return UNKNOWN;
-}
-
 void vendor_load_properties()
 {
     std::string platform = property_get("ro.board.platform");
@@ -102,8 +67,8 @@ void vendor_load_properties()
             property_set("persist.radio.multisim.config", "");
         }
     } else if (radio == "0x3") {
-        switch (detect_carrier()) {
-        case VERIZON:
+        std::string carrier = property_get("ro.boot.carrier");
+        if (carrier == "vzw") {
             property_set("ro.build.description", "falcon_verizon-user 5.1 LPB23.13-33.7 7 release-keys");
             property_set("ro.build.fingerprint", "motorola/falcon_verizon/falcon_cdma:5.1/LPB23.13-33.7/7:user/release-keys");
             property_set("ro.mot.build.customerid", "verizon");
@@ -113,18 +78,7 @@ void vendor_load_properties()
             property_set("ro.com.google.clientidbase.am", "android-verizon");
             property_set("ro.com.google.clientidbase.yt", "android-verizon");
             property_set("persist.radio.nw_mtu_enabled", "true");
-            break;
-        case SPRINT:
-            property_set("ro.build.description", "falcon_boost-user 5.1 LPB23.13-56 55 release-keys");
-            property_set("ro.build.fingerprint", "motorola/falcon_boost/falcon_cdma:5.1/LPB23.13-56/55:user/release-keys");
-            property_set("ro.mot.build.customerid", "sprint");
-            property_set("ro.cdma.home.operator.alpha", "Chameleon");
-            property_set("ro.cdma.home.operator.numeric", "310000");
-            property_set("ro.com.google.clientidbase.ms", "android-sprint-mvno-us");
-            property_set("ro.com.google.clientidbase.am", "android-sprint-mvno-us");
-            property_set("ro.com.google.clientidbase.yt", "android-sprint-mvno-us");
-            break;
-        case BOOST:
+        } else if (carrier == "boost") {
             property_set("ro.build.description", "falcon_boost-user 5.1 LPB23.13-56 55 release-keys");
             property_set("ro.build.fingerprint", "motorola/falcon_boost/falcon_cdma:5.1/LPB23.13-56/55:user/release-keys");
             property_set("ro.mot.build.customerid", "sprint");
@@ -133,8 +87,7 @@ void vendor_load_properties()
             property_set("ro.com.google.clientidbase.ms", "android-boost-us");
             property_set("ro.com.google.clientidbase.am", "android-boost-us");
             property_set("ro.com.google.clientidbase.yt", "android-boost-us");
-            break;
-        case USC:
+        } else if (carrier == "usc") {
             property_set("ro.build.description", "falcon_usc-user 5.1 LPB23.13-33.6 8 release-keys");
             property_set("ro.build.fingerprint", "motorola/falcon_usc/falcon_cdma:5.1/LPB23.13-33.6/8:user/release-keys");
             property_set("ro.mot.build.customerid", "usc");
@@ -146,8 +99,7 @@ void vendor_load_properties()
             property_set("ro.com.google.clientidbase", "android-motorola");
             property_set("ro.com.google.clientidbase.gmm", "android-motorola");
             property_set("ro.com.google.clientidbase.yt", "android-motorola");
-            break;
-        default:
+        } else {
             ERROR("Unknown mobile carrier");
         }
         property_set("ro.product.device", "falcon_cdma");

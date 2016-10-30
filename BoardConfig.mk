@@ -46,5 +46,8 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 # Release tools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
+# Camera
+BOARD_GLOBAL_CFLAGS += -DCAMERA_VENDOR_L_COMPAT
+
 # inherit from the proprietary version
 -include vendor/motorola/falcon/BoardConfigVendor.mk

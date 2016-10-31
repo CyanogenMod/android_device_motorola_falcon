@@ -17,7 +17,7 @@ etc/firmware/aps-Falc-01300000-0130-falcon.tdat
 etc/firmware/synaptics-s2316-13091704-175833-falcon.tdat
 
 # Camera
-lib/hw/camera.msm8226.so:lib/hw/camera.vendor.msm8226.so
+lib/hw/camera.msm8226.so:lib/hw/camera.vendor.msm8226.so|9668edeeef86b2a41fcf2ae6c7a62f9efe83cd8c
 lib/libmm-qcamera.so
 lib/libmmcamera_interface.so
 vendor/lib/libmmcamera2_c2d_module.so

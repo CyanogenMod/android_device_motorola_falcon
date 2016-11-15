@@ -17,7 +17,6 @@ import re
 
 def FullOTA_Assertions(info):
   AddBootloaderAssertion(info, info.input_zip)
-  AddRadioAssertion(info, info.input_zip)
 
 
 def FullOTA_PostValidate(info):
@@ -26,7 +25,6 @@ def FullOTA_PostValidate(info):
 
 def IncrementalOTA_Assertions(info):
   AddBootloaderAssertion(info, info.target_zip)
-  AddRadioAssertion(info, info.input_zip)
 
 
 def IncrementalOTA_PostValidate(info):
@@ -41,10 +39,6 @@ def AddBootloaderAssertion(info, input_zip):
     if "*" not in bootloaders:
       info.script.AssertSomeBootloader(*bootloaders)
     info.metadata["pre-bootloader"] = m.group(1)
-
-
-def AddRadioAssertion(info, input_zip):
-  info.script.AppendExtra('getprop("ro.boot.radio") == "0x3" && abort("XT1031 (CDMA) is currently not supported.");')
 
 
 def ReplaceApnList(info):

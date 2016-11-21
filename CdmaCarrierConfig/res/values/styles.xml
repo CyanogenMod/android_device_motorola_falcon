@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CdmaCarrierConfigTheme" parent="@android:style/Theme.Material.Settings">
+        <item name="preferenceTheme">@android:style/Theme.Material.Settings</item>
+    </style>
+</resources>

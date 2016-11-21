@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cyanogenmod.cdmacarrierconfig"
+    android:sharedUserId="android.uid.system">
+
+    <application android:label="@string/app_name">
+
+        <activity
+            android:name=".CarrierConfigSettings"
+            android:label="@string/system_settings_label"
+            android:theme="@style/CdmaCarrierConfigTheme">
+            <intent-filter>
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.wireless" />
+            <meta-data
+                android:name="com.android.settings.icon"
+                android:resource="@drawable/radio_tower" />
+        </activity>
+    </application>
+</manifest>
+

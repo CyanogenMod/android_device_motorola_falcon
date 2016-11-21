@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="carriers_entries">
+        <item>Manual</item>
+        <item>Boost Mobile</item>
+        <item>Sprint</item>
+        <item>Verizon Wireless</item>
+        <item>U.S. Cellular</item>
+    </string-array>
+
+    <string-array name="carriers_values" translatable="false">
+        <item/>
+        <item>311870</item>
+        <item>310120</item>
+        <item>310004</item>
+        <item>311220</item>
+    </string-array>
+</resources>

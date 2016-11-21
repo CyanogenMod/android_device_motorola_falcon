@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CDMA Carrier config</string>
+    <string name="system_settings_label">Carrier config</string>
+    <string name="operator_list_pref_title">Select operator</string>
+    <string name="operator_numeric_pref_title">Set operator numeric</string>
+    <string name="operator_numeric_pref_default_summary">No numeric set</string>
+    <string name="operator_numeric_dialog_title">Insert numeric</string>
+    <string name="operator_name_pref_title">Set operator name</string>
+    <string name="operator_name_pref_default_summary">No name set</string>
+    <string name="operator_name_dialog_title">Insert name</string>
+    <string name="reboot_needed_message">Reboot to apply the changes</string>
+</resources>

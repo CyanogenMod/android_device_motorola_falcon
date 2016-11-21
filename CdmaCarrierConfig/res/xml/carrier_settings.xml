@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="carrier_preference_screen">
+
+    <ListPreference
+        android:entries="@array/carriers_entries"
+        android:entryValues="@array/carriers_values"
+        android:key="operator_list"
+        android:selectable="true"
+        android:title="@string/operator_list_pref_title" />
+
+    <Preference
+        android:key="operator_name"
+        android:selectable="true"
+        android:summary="@string/operator_name_pref_default_summary"
+        android:title="@string/operator_name_pref_title" />
+
+    <Preference
+        android:key="operator_numeric"
+        android:selectable="true"
+        android:summary="@string/operator_numeric_pref_default_summary"
+        android:title="@string/operator_numeric_pref_title" />
+
+    <Preference
+        android:key="reboot_needed_pref"
+        android:selectable="false"
+        android:summary="@string/reboot_needed_message" />
+
+</PreferenceScreen>

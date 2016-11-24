@@ -46,8 +46,5 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 694288384
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
-# Release tools
-TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
-
 # inherit from the proprietary version
 -include vendor/motorola/falcon/BoardConfigVendor.mk

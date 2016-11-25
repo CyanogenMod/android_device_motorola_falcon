@@ -67,42 +67,17 @@ void vendor_load_properties()
             property_set("persist.radio.multisim.config", "");
         }
     } else if (radio == "0x3") {
-        std::string carrier = property_get("ro.boot.carrier");
-        if (carrier == "vzw") {
-            property_set("ro.build.description", "falcon_verizon-user 5.1 LPB23.13-33.7 7 release-keys");
-            property_set("ro.build.fingerprint", "motorola/falcon_verizon/falcon_cdma:5.1/LPB23.13-33.7/7:user/release-keys");
-            property_set("ro.mot.build.customerid", "verizon");
-            property_set("ro.cdma.home.operator.alpha", "Verizon");
-            property_set("ro.cdma.home.operator.numeric", "310004");
-            property_set("ro.com.google.clientidbase.ms", "android-verizon");
-            property_set("ro.com.google.clientidbase.am", "android-verizon");
-            property_set("ro.com.google.clientidbase.yt", "android-verizon");
-            property_set("persist.radio.nw_mtu_enabled", "true");
-        } else if (carrier == "boost") {
-            property_set("ro.build.description", "falcon_boost-user 5.1 LPB23.13-56 55 release-keys");
-            property_set("ro.build.fingerprint", "motorola/falcon_boost/falcon_cdma:5.1/LPB23.13-56/55:user/release-keys");
-            property_set("ro.mot.build.customerid", "sprint");
-            property_set("ro.cdma.home.operator.alpha", "Boost Mobile");
-            property_set("ro.cdma.home.operator.numeric", "311870");
-            property_set("ro.com.google.clientidbase.ms", "android-boost-us");
-            property_set("ro.com.google.clientidbase.am", "android-boost-us");
-            property_set("ro.com.google.clientidbase.yt", "android-boost-us");
-        } else if (carrier == "usc") {
-            property_set("ro.build.description", "falcon_usc-user 5.1 LPB23.13-33.6 8 release-keys");
-            property_set("ro.build.fingerprint", "motorola/falcon_usc/falcon_cdma:5.1/LPB23.13-33.6/8:user/release-keys");
-            property_set("ro.mot.build.customerid", "usc");
-            property_set("ro.cdma.home.operator.numeric", "311220");
-            property_set("gsm.sim.operator.numeric", "311580");
-            property_set("ro.cdma.home.operator.alpha", "U.S. Cellular");
-            property_set("ro.com.google.clientidbase.ms", "android-uscellular-us");
-            property_set("ro.com.google.clientidbase.am", "android-uscellular-us");
-            property_set("ro.com.google.clientidbase", "android-motorola");
-            property_set("ro.com.google.clientidbase.gmm", "android-motorola");
-            property_set("ro.com.google.clientidbase.yt", "android-motorola");
-        } else {
-            ERROR("Unknown mobile carrier");
+        std::string customNumeric = property_get("persist.operator.numeric");
+        if (!customNumeric.empty()) {
+            property_set("ro.cdma.home.operator.numeric", customNumeric.c_str());
+        }
+        std::string customName = property_get("persist.operator.alpha");
+        if (!customName.empty()) {
+            property_set("ro.cdma.home.operator.alpha", customName.c_str());
         }
         property_set("ro.product.device", "falcon_cdma");
+        property_set("ro.build.description", "falcon_boost-user 5.1 LPB23.13-56 55 release-keys");
+        property_set("ro.build.fingerprint", "motorola/falcon_boost/falcon_cdma:5.1/LPB23.13-56/55:user/release-keys");
         property_set("ro.build.product", "falcon_cdma");
         property_set("ro.telephony.default_cdma_sub", "1");
         property_set("ro.telephony.default_network", "4");
